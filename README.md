@@ -7,12 +7,10 @@ Simple and easy to use. Access Falix services all from one place like your clien
 
 ________________________
 
-![Latest Version of Falix Software](https://img.shields.io/badge/Version-v3.4.0-blue.svg)
-
 ![Workflow for Distribution to Windows](https://github.com/FalixNodes-Software/Desktop-App/actions/workflows/nsis-deployment.yml/badge.svg)
 ![Workflow for Distribution to macOS](https://github.com/FalixNodes-Software/Desktop-App/actions/workflows/dmg-deployment.yml/badge.svg)
 ![Workflow for Distribution to Linux](https://github.com/FalixNodes-Software/Desktop-App/actions/workflows/appimage-deployment.yml/badge.svg)
-![Workflow for Distribution to Windows 10/11](https://github.com/FalixNodes-Software/Desktop-App/actions/workflows/appx-deployment.yml/badge.svg)
+
 _______________________
 
 ## Channels
@@ -34,6 +32,38 @@ The alpha build of Falix Software usually shows what was done within the last ho
  <!-- - [Download for Windows]() -->
  <!-- - [Download for macOS]() -->
  <!-- - [Download for Linux]() -->
+
+________________________
+
+## Falix Software Distrubing Check List
+Before doing any stable releases of Falix Software, including beta, a check list must now be performed to ensure quailty for user experience.
+
+Developent End:
+ - [x] The package script `npm start` starts the software in development mode with no errors (Port 9999 error is allowed)
+ - [x] In the software, during development mode, check the following:
+   - [x] Switch tabs easily back and forth using the main sidebar and in the Settings page
+   - [x] Version numbers do show up in About section of the Settings page
+   - [x] Controls do work on the Client and Game panel
+   - [x] Security Warning for domain restriction display correctly in all webviews
+   - [x] Clicking an article on the News tab will open the article in the default web browser
+   - [x] All buttons work in system tray
+   - [x] Close software and make sure it's fully closed
+Production End:
+ - [x] Disable developer tools
+ - [x] Check channel release
+ - [x] The package script `npm run build` builds the setup file of Falix Software with no errors
+ - [x] If distrubiting for beta, make sure channel is correct
+ - [x] Setup files work and installs properly
+ - [x] The software starts in production mode with no erros (Port 9999 error is allowed), check with terminal to confirm
+ - [x] In the software, during production mode, check the following:
+   - [x] Switch tabs easily back and forth using the main sidebar and in the Settings page
+   - [x] Version numbers do show up in About section of the Settings page
+   - [x] Controls do work on the Client and Game panel
+   - [x] Security Warning for domain restriction display correctly in all webviews
+   - [x] Clicking an article on the News tab will open the article in the default web browser
+   - [x] All buttons work in system tray
+   - [x] Close software and make sure it's fully closed
+
 ________________________
 
 ## ❔ Q&A for Developers
@@ -181,102 +211,7 @@ After installer is done building, check the `/dist/` folder.
 
 ________________________
 
-## 📊 Benchmark Testing
-### What is this?
-This will show data and timing of Falix Software being ran on my machines. This will show how well the computer performs running the software, as we're still improving performance in v3.
-
-### Machines
-#### HP All In One 24-e014
- - CPU: Intel Core i3 7100u | 2.24GHz | 4 Cores
- - Memory: 16GB DDR4
- - Graphics Card: Intel HD 620 Kaby Lake GT2
- - Storage: 120GB SSD
- - Operating System: Fedora 34
- - Desktop Environment: GNOME 40 Wayland
- - Node Version: v14.17.1
-
-#### Dell Inspiron 15-3552
- Note: This low end laptop appears to have no fans.
- - CPU: Intel Celeron N3060 | 1.60GHz | 2 Cores
- - Memory: 4GB DDR3L
- - Graphics Card: Intel HD (Unknown model)
- - Storage: 320GB HDD
- - Operating System: Windows 10 v20H2
- - DirectX: 12
- - Node Version: v14.17.1
-
-#### HP HQ-TRE 71025
- Note: This low end laptop appears to have no fans.
- - CPU: Intel Pentium N3060 | 2.16GHz | 2 Cores
- - Memory: 4GB DDR3L
- - Graphics Card: Intel HD (Unknown model)
- - Storage: 160GB HDD
- - Operating System: Windows 10 v20H2
- - DirectX: 12
- - Node Version: v14.17.1
-
-#### HP Omni-100 5050
- - CPU: AMD Althon | 1.80Ghz | 2 Cores
- - Memory: 8GB DDR3L
- - Graphics Card: 
- - Storage: 320GB HDD
- - Operating System: Windows 10 v21H1
- - DirectX: 12
- - Node Version: v14.17.1
-
-### Running
-Running software after intended install (Not building)
-
-#### HP All In One 24-e014
- - Start software             |        01s
-
-#### Dell Inspiron 15-3552
- - Start software             |        09s
-
-#### HP Omni-100 5050
- - Start software             |        07s
-
-
-### Building
-Running commands from __package.json__ in the following order:
- - Install node packages: `npm i`
- - Rebuild modules like node-pty and Glasstron: `npm run rebuild`
- - Start software: `npm start`
- - Build setup files: `npm run build`
-
-#### HP All In One 24-e014
- - Installing node packges    |        50s
- - Rebuild Modules            |        12s
- - Start software             |        02s
- - Build - Target: AppImage   |     1m 49s
- 
- AppImage file is smaller than NSIS
-
-#### Dell Inspiron 15-3552
- - Installing node packges    |    2m  59s
- - Rebuild Modules            |    1m  54s
- - Start software             |        04s
- - Build - Target: AppImage   |    2m 15s
-
-#### HP HQ-TRE 71025
- - Installing node packges    |    6m  05s
- - Rebuild Modules            |    2m  45s
- - Start software             |        07s
- - Build - Target: NSIS       |    12m 00s
-
-#### HP Omni-100 5050
- - Installing node packges    |    3m  46s
- - Rebuild Modules            |    1m  37s
- - Start software             |        07s
- - Build - Target: NSIS       |    9m  00s
-
- NOTE: We also build .appx files with [`electron-windows-store`](https://www.npmjs.com/package/electron-windows-store) for the Microsoft Store
-
-________________________
-
 ## 💡 Credits
 Developer/Maintainer: [Korbs Studio](https://github.com/KorbsStudio)
-
-Electron Titlebar OS Detection: [Korbs Studio](https://github.com/KorbsStudio/electron-titlebar-os-detection)
 
 Blur Composition Effect: [Glasstron by AryToNex](https://github.com/AryToNeX/Glasstron)
