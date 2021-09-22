@@ -48,6 +48,7 @@ Developent End:
    - [x] Clicking an article on the News tab will open the article in the default web browser
    - [x] All buttons work in system tray
    - [x] Close software and make sure it's fully closed
+
 Production End:
  - [x] Disable developer tools
  - [x] Check channel release
