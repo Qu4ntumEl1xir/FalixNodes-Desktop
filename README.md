@@ -132,11 +132,6 @@ You can also download the source code manually and go from there.
 ### Other Modifications
 There are some other assets you may need to change if you're forking this repo for another host or for a simliar project. Assets for the background images, names, etc need to be changed as they may contain resources from Falix or the name "Falix" in general. You also need to update other stuff like the update server provider and learn how it works if you do plan to include auto updating like we did.
 
-#### Pushy Notifications
-To make sure your fork of the software doesn't recieve notifications for Falix Inc, you'll need to either remove Pushy all together or change the app ID of Pushy.
-
-If this isn't changed, your customers who'll use the software may recieve push notifications from the forked version of the software and may be confused.
-
 #### Auto Updates
 As seen here in the __[package.json](https://github.com/FalixNodes-Software/Desktop-App/blob/master/package.json#L47)__, there is a url "https://updates.korbsstudio.com/falix-software/", which is a self hosted update server. 
 
