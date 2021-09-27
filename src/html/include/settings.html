@@ -8,12 +8,13 @@
     <!-- <button class="st-nav-page" onclick="openStPage('st-id-active_tab', this, 'var(--accent)')"><i class="fas fa-columns"></i> Active Tabs</button> -->
     <button class="st-nav-page" onclick="openStPage('st-id-appearance', this, 'var(--accent)')"><i class="fas fa-swatchbook"></i> Appearance</button>
     <button class="st-nav-page" onclick="openStPage('st-id-advance', this, 'var(--accent)')"><i class="fas fa-toolbox"></i> Advanced</button>
+    <button class="st-nav-page" onclick="openStPage('st-id-sandbox', this, 'var(--accent)')"><i class="fas fa-box-open"></i> Sandbox</button>
 </div>
 
 <div class="st-tab-content">
     <div id="st-id-about" class="st-tab">
         <h1>Falix Software</h1>
-        <p>Version: 3.4.0</p>
+        <p>Version: 3.4.1</p>
         <p>Package Version: <span id="version"></span></p>
         <h2>License</h2>
         <div class="scrollable-ta">
@@ -169,6 +170,10 @@
                     <span id="toggle-dm-cm"></span>
                 </div>
             </div>        
+        </div>
+        <div id="st-id-sandbox" class="st-tab">
+            <button onclick="window.api.send('open-update-dialog')">Update Dialog</button>
+            <button onclick="window.api.send('open-sample-dialog')">Sample Dialog</button>
         </div>
     </div>
 </div>
