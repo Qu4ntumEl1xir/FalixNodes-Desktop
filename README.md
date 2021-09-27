@@ -31,7 +31,7 @@ The alpha build of Falix Software usually shows what was done within the last ho
 
  <!-- - [Download for Windows]() -->
  <!-- - [Download for macOS]() -->
- <!-- - [Download for Linux]() -->
+ - [Download for Linux](https://updates.korbsstudio.com/falix-software/falixnodes-4.51.0-alpha-1.AppImage)
 
 ________________________
 
@@ -211,3 +211,5 @@ ________________________
 Developer/Maintainer: [Korbs Studio](https://github.com/KorbsStudio)
 
 Blur Composition Effect: [Glasstron by AryToNex](https://github.com/AryToNeX/Glasstron)
+
+Update Sound: [Time is now](https://notificationsounds.com/notification-sounds/time-is-now-585)
