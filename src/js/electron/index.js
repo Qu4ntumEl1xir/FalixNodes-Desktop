@@ -1,4 +1,4 @@
-const {app, BrowserWindow, contextBridge, dialog, protocol, ipcMain, ipcRenderer, globalShortcut, Menu, Notification, Tray, shell} = require('electron')
+const {app, BrowserWindow, contextBridge, protocol, ipcMain, ipcRenderer, globalShortcut, Notification, shell} = require('electron')
 const { autoUpdater } = require("electron-updater")
 const { fork } = require('child_process')
 const ps = fork(`${__dirname}/server.js`)
@@ -10,6 +10,9 @@ const url = require('url')
 const os = require("os")
 autoUpdater.logger = log
 global.devMode = true
+
+let mainWindow;
+let dialogUpdateAvailable;
 
 if (process.platform == 'darwin') { 
   app.whenReady().then(() => {
@@ -75,6 +78,9 @@ function createWindow() {
   ipcMain.on('restore',   () => {mainWindow.restore()})
   ipcMain.on('close',     () => {mainWindow.close()})
 
+  ipcMain.on('open-sample-dialog',     () => {(newDialogSample())})
+  ipcMain.on('open-update-dialog',     () => {(newDialogUpdateAvailable())})
+
   ipcMain.on('open_post-one',     () => {shell.openExternal('https://scripts.korbsstudio.com/falix-software/news/one.html')})
   ipcMain.on('open_post-two',     () => {shell.openExternal('https://scripts.korbsstudio.com/falix-software/news/two.html')})
   ipcMain.on('open_post-three',   () => {shell.openExternal('https://scripts.korbsstudio.com/falix-software/news/three.html')})
@@ -97,16 +103,59 @@ function createWindow() {
 
   autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     setTimeout(() => {
-      const dialogOpts = {
-        type: 'question',
-        buttons: ['Restart Now', 'Later'],
-        title: 'Falix Software Updater',
-        message: process.platform === 'win32' ? releaseNotes : releaseName,
-        detail: 'A new update is ready!'
-      }
-      dialog.showMessageBox(dialogOpts).then((returnValue) => {if (returnValue.response === 0) autoUpdater.quitAndInstall(false)})
+      newDialogUpdateAvailable();
     }, 4000)
   })
+}
+
+function newDialogSample() {
+  const dialogSample = new BrowserWindow({
+    width: 600,
+    height: 250,
+    frame: false,
+    transparent: true,
+    resizable: false,
+    maximizable: false,
+    autoHideMenuBar: true,
+    titleBarStyle: global.titleBarStyle,
+    webPreferences: {
+      devTools: global.devMode,
+      preload: path.join(__dirname, "../../js/electron/preload.js"),
+    }
+  })
+  dialogSample.loadFile('./src/html/dialogs/sample.html')
+
+  ipcMain.on('minimize',  () => {dialogSample.minimize()})
+  ipcMain.on('maximize',  () => {dialogSample.maximize()})
+  ipcMain.on('restore',   () => {dialogSample.restore()})
+  ipcMain.on('close',     () => {dialogSample.close()})
+
+  ipcMain.on('dismiss',   () => {dialogSample.close();})
+}
+
+function newDialogUpdateAvailable() {
+  const dialogUpdateAvailable = new BrowserWindow({
+    width: 600,
+    height: 250,
+    frame: false,
+    transparent: true,
+    resizable: false,
+    maximizable: false,
+    autoHideMenuBar: true,
+    titleBarStyle: global.titleBarStyle,
+    webPreferences: {
+      devTools: global.devMode,
+      preload: path.join(__dirname, "../../js/electron/preload.js"),
+    }
+  })
+  dialogUpdateAvailable.loadFile('./src/html/dialogs/update-available.html')
+
+  ipcMain.on('minimize',  () => {dialogUpdateAvailable.minimize()})
+  ipcMain.on('maximize',  () => {dialogUpdateAvailable.maximize()})
+  ipcMain.on('restore',   () => {dialogUpdateAvailable.restore()})
+  ipcMain.on('close',     () => {dialogUpdateAvailable.close()})
+
+  ipcMain.on('update',    () => {autoUpdater.quitAndInstall()})
 }
 
 function newCP() {
@@ -147,6 +196,4 @@ function newGP() {
   newCP.loadFile('./src/html/new-window/panel.html')
 }
 
-function quitApp() {}
-
-app.whenReady().then(() => {createWindow()})
+app.whenReady().then(() => {createWindow();})
