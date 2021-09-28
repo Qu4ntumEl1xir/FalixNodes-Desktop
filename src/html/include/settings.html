@@ -8,7 +8,7 @@
     <!-- <button class="st-nav-page" onclick="openStPage('st-id-active_tab', this, 'var(--accent)')"><i class="fas fa-columns"></i> Active Tabs</button> -->
     <button class="st-nav-page" onclick="openStPage('st-id-appearance', this, 'var(--accent)')"><i class="fas fa-swatchbook"></i> Appearance</button>
     <button class="st-nav-page" onclick="openStPage('st-id-advance', this, 'var(--accent)')"><i class="fas fa-toolbox"></i> Advanced</button>
-    <button class="st-nav-page" onclick="openStPage('st-id-sandbox', this, 'var(--accent)')"><i class="fas fa-box-open"></i> Sandbox</button>
+    <button class="st-nav-page" onclick="openStPage('st-id-sandbox', this, 'var(--accent)')" id="devMode-Sandbox"><i class="fas fa-box-open"></i> Sandbox</button>
 </div>
 
 <div class="st-tab-content">
@@ -172,8 +172,13 @@
             </div>        
         </div>
         <div id="st-id-sandbox" class="st-tab">
+            <h1>Sandbox</h1>
+            <p>This area is for testing only.</p>
+            <h2>Dialogs</h2>
             <button onclick="window.api.send('open-update-dialog')">Update Dialog</button>
             <button onclick="window.api.send('open-sample-dialog')">Sample Dialog</button>
+            <h2>Notifications</h2>
+            <button onclick="openInBrowser()">Opening in Browser...</button>
         </div>
     </div>
 </div>
