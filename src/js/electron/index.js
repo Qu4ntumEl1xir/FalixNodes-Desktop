@@ -9,7 +9,7 @@ const path = require('path')
 const url = require('url')
 const os = require("os")
 autoUpdater.logger = log
-global.devMode = true
+global.devMode = false
 
 let mainWindow;
 let dialogUpdateAvailable;
