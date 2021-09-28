@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="./css/fonts.css">
         <link rel="stylesheet" href="./css/windows-titlebar.css">
-        <link rel="stylesheet" href="./css/smallWindow.css">
         
         <link id="language" rel="stylesheet" href="./css/settings/language/english.css">
         <link id="accent-setting" rel="stylesheet" type="text/css" href="./css/settings/accent-color/default.css">
@@ -91,7 +90,6 @@
                 <div include-html="./html/include/settings.html"></div>
             </div>
         </div>
-        <script src="./js/require.js"></script>
         <script src="./js/hotkeys.js"></script>
         <script src="./js/controls.js"></script>
         
@@ -109,11 +107,5 @@
         <script src="./js/settings/developer-mode.js"></script>
         <script src="./js/settings/rounded-corners.js"></script>
         <script>includeHTML();</script>
-        <script>
-            var webview_account = document.getElementById('account_wv');
-            webview_account.addEventListener('dom-ready', function () {
-                webview_account.insertCSS('nav.navbar.navbar-light.navbar-glass.navbar-top.navbar-expand {display: none !important;}.card-body.position-relative {display: none !important;}div#adngin-bottom_leaderboard_client_panel-0 {display: none !important;}')
-            });
-        </script>
     </body>
 </html>

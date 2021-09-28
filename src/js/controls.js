@@ -4,6 +4,7 @@ var webviewGP = document.getElementById('game_panel_wv');
 var webviewSP = document.getElementById('support_wv')
 var webviewAC = document.getElementById('account_wv')
 var webviewHC = document.getElementById('help_wv')
+var webviewSU = document.getElementById('uptime')
 
 // For Developers
 function CP_wvDevTools(){webviewCP.openDevTools()}
@@ -11,6 +12,7 @@ function wvDevTools(){webviewGP.openDevTools()}
 function SP_wvDevTools(){webviewSP.openDevTools()}
 function webviewAC(){webviewAC.openDevTools()}
 function webviewHC(){webviewHC.openDevTools()}
+function SU_wvDevTools(){webviewSU.openDevTools()}
 
 // General Controls
 function CP_wvGoBack(){webviewCP.goBack()}
@@ -56,5 +58,10 @@ function unloadGamePanel() {
 
 var webview = document.getElementById('uptime');
 webview.addEventListener('dom-ready', function () {
-    webview.insertCSS('.page-content, body {background: transparent !important;} html::-webkit-scrollbar {width: 0px !important;} -webkit-scrollbar {width: 0px !important;} .page-header,.page-prefooter{display:none!important}.note.note-success.note-bordered{display:none!important}div#twitterport_md{display:none!important}.col-lg-4.col-md-6.col-sm-6.col-xs-12.searchcol{display:none!important}.col-lg-4.col-md-6.col-sm-6.col-xs-12.overalluptime{display:none!important}.col-lg-4.col-md-12.col-sm-12.col-xs-12.dbbtns,.col-lg-4.col-md-12.col-sm-12.col-xs-12.dbbtns.dbbtnstop{display:none!important}#bulkreportcontainer #datatable_products,.portlet.light{background-color:transparent!important;color:#fff!important}#bulkreportcontainer .table-bordered>tbody>th,#bulkreportcontainer table .heading{display:none!important}.table-bordered{border:none!important}#bulkreportcontainer .table-bordered>tbody>tr>td,#bulkreportcontainer .table-bordered>tbody>tr>th,#bulkreportcontainer .table-bordered>tfoot>tr>td,#bulkreportcontainer .table-bordered>tfoot>tr>th,#bulkreportcontainer .table-bordered>thead>tr>td,#bulkreportcontainer .table-bordered>thead>tr>th{border:none!important;border-bottom:none!important}')
+    webview.insertCSS('*{border:none!important}::-webkit-scrollbar{width:0!important}.page-header,.page-prefooter{display:none!important}.note.note-success.note-bordered{display:none!important}div#twitterport_md{display:none!important}.col-lg-4.col-md-6.col-sm-6.col-xs-12.searchcol{display:none!important}.col-lg-4.col-md-6.col-sm-6.col-xs-12.overalluptime{display:none!important}.col-lg-4.col-md-12.col-sm-12.col-xs-12.dbbtns,.col-lg-4.col-md-12.col-sm-12.col-xs-12.dbbtns.dbbtnstop{display:none!important}#bulkreportcontainer #datatable_products,.portlet.light{background-color:transparent!important;color:#fff!important}#bulkreportcontainer .table-bordered>tbody>th,#bulkreportcontainer table .heading{display:none!important}.table-bordered{border:none!important}#bulkreportcontainer .table-bordered>tbody>tr>td,#bulkreportcontainer .table-bordered>tbody>tr>th,#bulkreportcontainer .table-bordered>tfoot>tr>td,#bulkreportcontainer .table-bordered>tfoot>tr>th,#bulkreportcontainer .table-bordered>thead>tr>td,#bulkreportcontainer .table-bordered>thead>tr>th{border:none!important;border-bottom:none!important}#bulkreportcontainer .table-bordered>tbody>tr[role=row]{border:none!important;background:#0b1725!important}#bulkreportcontainer .table-bordered>tbody>tr>td,#bulkreportcontainer .table-bordered>tbody>tr>th,#bulkreportcontainer .table-bordered>tfoot>tr>td,#bulkreportcontainer .table-bordered>tfoot>tr>th,#bulkreportcontainer .table-bordered>thead>tr>td,#bulkreportcontainer .table-bordered>thead>tr>th{border:none!important}.portlet.light{margin-top:-40px!important}div#bulkreportcontainer{background:#162230!important}.row.reglnk{text-align:left!important;position:absolute!important;margin:-25px 0 0 22px!important;pointer-events:none!important}')
+});
+
+var webview_account = document.getElementById('account_wv');
+webview_account.addEventListener('dom-ready', function () {
+    webview_account.insertCSS('nav.navbar.navbar-light.navbar-glass.navbar-top.navbar-expand {display: none !important;}.card-body.position-relative {display: none !important;}div#adngin-bottom_leaderboard_client_panel-0 {display: none !important;}')
 });
