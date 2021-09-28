@@ -9,18 +9,7 @@ contextBridge.exposeInMainWorld(
                                "close",
                                "update",
                                "open-update-dialog",
-                               "open-sample-dialog",
-                               
-                               "open_post-one",
-                               "open_post-two",
-                               "open_post-three",
-                               "open_post-four",
-                               "open_post-five",
-                               "open_post-six",
-                               "open_post-seven",
-                               "open_post-eight",
-                               "open_post-nine",
-                               "open_post-ten"];
+                               "open-sample-dialog"];
           if (validChannels.includes(channel)) {
               ipcRenderer.send(channel, data);
           }
