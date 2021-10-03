@@ -15,37 +15,6 @@
         <link id="accent-setting" rel="stylesheet" type="text/css" href="./css/settings/accent-color/default.css">
         <link id="rounded-corners-setting" rel="stylesheet" type="text/css" href="./css/settings/rounded-corners/off.css">
         <link id="developer-mode" rel="stylesheet" type="text/css" href="./css/settings/developer-mode/off.css">
-        
-        <link id="noti_1" rel="stylesheet" type="text/css" href="./css/blank.css"> <!-- For future notifications only, will remove 1 - 20 once we get to the 25th notification and add 31 - 60 -->
-        <link id="noti_2" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_3" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_4" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_5" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_6" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_7" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_8" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_9" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_10" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_11" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_12" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_13" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_14" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_15" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_16" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_17" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_18" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_19" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_20" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_21" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_22" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_23" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_24" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_25" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_26" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_27" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_28" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_29" rel="stylesheet" type="text/css" href="./css/blank.css">
-        <link id="noti_30" rel="stylesheet" type="text/css" href="./css/blank.css">
     </head>
     <header data-for-os="windows" id="titlebar" class="titlebar">
         <div>
@@ -56,7 +25,7 @@
             <div onclick="window.api.send('close')" class="button" id="close-button"><img class="icon" srcset="./images/icons/titlebar/close-w-10.png 1x, ./images/icons/titlebar/close-w-12.png 1.25x, ./images/icons/titlebar/close-w-15.png 1.5x, ./images/icons/titlebar/close-w-15.png 1.75x, ./images/icons/titlebar/close-w-20.png 2x, ./images/icons/titlebar/close-w-20.png 2.25x, ./images/icons/titlebar/close-w-24.png 2.5x, ./images/icons/titlebar/close-w-30.png 3x, ./images/icons/titlebar/close-w-30.png 3.5x" draggable="false" /></div>
         </div>
     </header>
-    <body onload="setTimeout (() => {unloadGamePanel();}, 2500)">
+    <body onload="setTimeout (() => {unloadGamePanel();}, 280)">
         <div class="nav_area">
             <div include-html="./html/include/nav.html"></div>
         </div>
@@ -74,9 +43,6 @@
                 <webview id="game_panel_wv" preload='./js/detection/domain-restriction.js' src="http://127.0.0.1:9999/blank.html"></webview>
             </div>
 
-            <div id="support" class="page_content">
-                <webview id="support_wv" preload='./js/detection/domain-restriction.js' src="https://support.falixnodes.net/"></webview>
-            </div>
             <div id="help_center" class="page_content">
                 <webview id="help_wv" preload='./js/detection/domain-restriction.js' src="https://help.falixnodes.net/"></webview>
             </div>
