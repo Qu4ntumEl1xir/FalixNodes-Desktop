@@ -7,6 +7,8 @@ t2p#page-help_center::before {content: "Centro de ajuda";}
 t2p#page-settings::before {content: "Configurações";}
 
 t2p#nd-Opening-in-brower::before {content: "Abrindo em brower";}
+t2p#update_downloading::before {content: "Atualização disponível";}
+t2p#update_failed::before {content: "Atualização falhou";}
 t2p#netork_connection-lost::before {content: "Conexão perdida";}
 t2p#netork_connection-restored::before {content: "Connection Restaurado";}
 

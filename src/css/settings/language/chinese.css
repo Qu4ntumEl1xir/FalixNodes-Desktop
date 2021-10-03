@@ -8,6 +8,8 @@ t2p#page-help_center::before {content: "帮助中心";}
 t2p#page-settings::before {content: "设置";}
 
 t2p#notify-internet-lost::before {content: "Connection Lost";}
+t2p#update_downloading::before {content: "更新可用";}
+t2p#update_failed::before {content: "更新失败";}
 t2p#notify-internet-restored::before {content: "Connection Restored";}
 
 t2p#h1-settings::before {content: "设置";}

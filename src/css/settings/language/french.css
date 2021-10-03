@@ -7,7 +7,9 @@ t2p#page-support::before {content: "Support";}
 t2p#page-help_center::before {content: "Centre d'aide";}
 t2p#page-settings::before {content: "Paramètres";}
 
-t2p#notify-internet-lost::before {content: "Connection Lost";}
+t2p#update_downloading::before {content: "Update downloading";}
+t2p#update_failed::before {content: "Mise à jour disponible";}
+t2p#notify-internet-lost::before {content: "Mise à jour a échoué";}
 t2p#notify-internet-restored::before {content: "Connection Restored";}
 
 t2p#h1-settings::before {content: "Paramètres";}
