@@ -389,3 +389,6 @@ div#st-id-sandbox button {
   border-radius: 3px;
   margin-top: 8px;
 }
+
+button#up_downloading {display: none;}
+button#up_failed {display: none; background: rgb(255, 63, 63);}
