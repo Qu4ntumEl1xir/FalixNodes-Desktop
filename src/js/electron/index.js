@@ -1,4 +1,4 @@
-const {app, BrowserWindow, contextBridge, protocol, ipcMain, ipcRenderer, globalShortcut, Notification, shell} = require('electron')
+const {app, BrowserWindow, contextBridge, protocol, ipcMain, ipcRenderer, globalShortcut, Notification, shell, webContents} = require('electron')
 const { autoUpdater } = require("electron-updater")
 const { fork } = require('child_process')
 const ps = fork(`${__dirname}/server.js`)
@@ -9,18 +9,18 @@ const path = require('path')
 const url = require('url')
 const os = require("os")
 autoUpdater.logger = log
-global.devMode = false
+global.devMode = true
 
 let mainWindow;
 let dialogUpdateAvailable;
 
-if (process.platform == 'darwin') { 
+if (process.platform == 'darwin') {
   app.whenReady().then(() => {
     global.blur = "blurbehind"
     global.frame = false
     global.titleBarStyle = 'hiddenInset'
 })}
-else if(process.platform == 'win32'){ 
+else if(process.platform == 'win32'){
   app.whenReady().then(() => {
     global.blur = "blurbehind"
     global.frame = false
@@ -80,20 +80,18 @@ function createWindow() {
 
   ipcMain.on('open-sample-dialog',     () => {(newDialogSample())})
   ipcMain.on('open-update-dialog',     () => {(newDialogUpdateAvailable())})
+  ipcMain.on('open-failed-dialog',     () => {(newDialogUpdateFailed())})
 
   mainWindow.once('ready-to-show', () => {splashWindow.destroy(); mainWindow.show()});
 
-  autoUpdater.on('update-available', (info) => {showNotification();})
-  autoUpdater.on('error', (err) => {showNotificationFailed();})
+  autoUpdater.on('update-available', (info) => {mainWindow.webContents.insertCSS('button#up_downloading {display: inherit !important;}')})
+  autoUpdater.on('error', (err) => {mainWindow.webContents.insertCSS('button#up_failed {display: inherit !important;}')})
   autoUpdater.checkForUpdates()
-
-  function showNotification() {new Notification({ title: "Falix Software", body: 'A new updating is downloading in the background...' }).show()}
-  function showNotificationFailed() {new Notification({ title: "Falix Software", body: 'Update failed to download.' }).show()}
-
   autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName) => {
     setTimeout(() => {
       newDialogUpdateAvailable();
-    }, 4000)
+      mainWindow.webContents.insertCSS('button#up_downloading {display: none !important;}')
+    }, 6000)
   })
 }
 
@@ -147,6 +145,29 @@ function newDialogUpdateAvailable() {
   ipcMain.on('update',    () => {autoUpdater.quitAndInstall()})
 }
 
+function newDialogUpdateFailed() {
+  const dialogUpdateAvailable = new BrowserWindow({
+    width: 600,
+    height: 300,
+    frame: false,
+    transparent: true,
+    resizable: false,
+    maximizable: false,
+    autoHideMenuBar: true,
+    titleBarStyle: global.titleBarStyle,
+    webPreferences: {
+      devTools: global.devMode,
+      preload: path.join(__dirname, "../../js/electron/preload.js"),
+    }
+  })
+  dialogUpdateAvailable.loadFile('./src/html/dialogs/update-failed.html')
+
+  ipcMain.on('minimize',  () => {dialogUpdateAvailable.minimize()})
+  ipcMain.on('maximize',  () => {dialogUpdateAvailable.maximize()})
+  ipcMain.on('restore',   () => {dialogUpdateAvailable.restore()})
+  ipcMain.on('close',     () => {dialogUpdateAvailable.close()})
+}
+
 function newCP() {
   const newCP = new BrowserWindow({
     width: 800,
@@ -186,3 +207,4 @@ function newGP() {
 }
 
 app.whenReady().then(() => {createWindow();})
+setInterval(() => {autoUpdater.checkForUpdates();}, 300000);
