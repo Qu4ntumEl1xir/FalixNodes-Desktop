@@ -1,4 +1,6 @@
 node_modules
 dist
 .vs
-Falix-win32-x64/*
+Falix-win32-x64
+Falix-osx-x64
+Falix-linux-x64
