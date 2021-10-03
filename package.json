@@ -1,6 +1,6 @@
 {
   "name": "falixnodes",
-  "version": "4.51.0-alpha-2",
+  "version": "4.51.0-alpha-3",
   "description": "",
   "main": "src/js/electron/index.js",
   "scripts": {
@@ -12,11 +12,11 @@
   "dependencies": {
     "electron-log": "^4.3.5",
     "electron-updater": "^4.3.9",
-    "glasstron": "^0.0.7",
+    "glasstron": "^0.1.0",
     "node-static": "^0.7.11"
   },
   "devDependencies": {
-    "electron": "^15.0.0",
+    "electron": "^15.1.0",
     "electron-builder": "^22.11.7",
     "electron-rebuild": "^3.2.0"
   },
