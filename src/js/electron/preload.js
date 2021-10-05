@@ -10,7 +10,12 @@ contextBridge.exposeInMainWorld( "api", { send: (channel, data) => {let validCha
   "open-failed-dialog",
   "open-sample-dialog",
   "blurToggleOff",
-  "blurToggleOn"
+  "blurToggleOn",
+  "btBH",
+  "btTP",
+  "btAY",
+  "btVB",
+  "open-glasstron-api-demo"
 ]; if (validChannels.includes(channel)) {ipcRenderer.send(channel, data);}}});
 
 window.addEventListener('DOMContentLoaded', () => {const replaceText = (selector, text) => {const element = document.getElementById(selector)

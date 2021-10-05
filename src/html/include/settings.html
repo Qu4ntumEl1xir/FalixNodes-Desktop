@@ -141,6 +141,16 @@
                     <button onclick="setBlur('Off')" id="blurOff">Off</button>
                 </div>
             </div>
+            <div class="setting-fs">
+                <h3>Blur Type</h3>
+                <p>The setting below is not setup yet to be saved. When you reload or restart the app, it'll switch back to default.</p>
+                <div class="button-row-fs">
+                    <button onclick="window.api.send('btBH')">Blurbehind</button>
+                    <button onclick="window.api.send('btTP')">Transparent</button>
+                    <button onclick="window.api.send('btAY')">Acrylic (Windows only)</button>
+                    <button onclick="window.api.send('btVB')">Vibrancy (macOS only)</button>
+                </div>
+            </div>
         </div>
         <div id="st-id-advance" class="st-tab">
             <div class="setting-fs">
@@ -160,6 +170,8 @@
         <div id="st-id-sandbox" class="st-tab">
             <h1>Sandbox</h1>
             <p>This area is for testing only.</p>
+            <h2>Glasstron API</h2>
+            <button onclick="window.api.send('open-glasstron-api-demo')">Demo Window</button>
             <h2>Dialogs</h2>
             <button onclick="window.api.send('open-update-dialog')">Update Dialog</button>
             <button onclick="window.api.send('open-sample-dialog')">Sample Dialog</button>

@@ -12,8 +12,6 @@ const os = require("os")
 autoUpdater.logger = log
 global.devMode = true
 
-
-
 let mainWindow;
 let dialogUpdateAvailable;
 
@@ -81,10 +79,17 @@ function createWindow() {
   
   ipcMain.on("blurToggleOn", async (e, value) => {if(mainWindow !== null){e.sender.send("blurStatus", await mainWindow.setBlur(true))}});
   ipcMain.on("blurToggleOff", async (e, value) => {if(mainWindow !== null){e.sender.send("blurStatus", await mainWindow.setBlur(false))}});
+
+  ipcMain.on("btBH", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'blurbehind';e.sender.send("blurTypeChanged", mainWindow.blurType);}});
+  ipcMain.on("btTP", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'transparent';e.sender.send("blurTypeChanged", mainWindow.blurType);}});
+  ipcMain.on("btAY", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'acrylic';e.sender.send("blurTypeChanged", mainWindow.blurType);}});
+  ipcMain.on("btVB", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'vibrancy';e.sender.send("blurTypeChanged", mainWindow.blurType);}});
   
   ipcMain.on('open-sample-dialog',     () => {(newDialogSample())})
   ipcMain.on('open-update-dialog',     () => {(newDialogUpdateAvailable())})
   ipcMain.on('open-failed-dialog',     () => {(newDialogUpdateFailed())})
+
+  ipcMain.on('open-glasstron-api-demo', () => {(glasstronAPIDemo())})
 
   ipcMain.on('demoCache',              () => {(demoCache())})
 
@@ -101,6 +106,31 @@ function createWindow() {
   })
 }
 
+function glasstronAPIDemo() {
+  const gAPI = new glasstron.BrowserWindow({
+    width: 600,
+    height: 450,
+    transparent: true,
+    frame: false,
+    blur: true,
+    blurType: global.blur,
+    webPreferences: {
+      devTools: global.devMode,
+      preload: path.join(__dirname, "../../js/electron/preload.js"),
+    }
+  })
+
+  gAPI.loadFile('./src/html/demos/glasstron.html')
+  
+  ipcMain.on("blurToggleOn", async (e, value) => {if(gAPI !== null){e.sender.send("blurStatus", await gAPI.setBlur(true))}});
+  ipcMain.on("blurToggleOff", async (e, value) => {if(gAPI !== null){e.sender.send("blurStatus", await gAPI.setBlur(false))}});
+
+  ipcMain.on("btBH", (e, value) => {const gAPI = BrowserWindow.fromWebContents(e.sender);if(gAPI !== null){gAPI.blurType = 'blurbehind';e.sender.send("blurTypeChanged", gAPI.blurType);}});
+  ipcMain.on("btTP", (e, value) => {const gAPI = BrowserWindow.fromWebContents(e.sender);if(gAPI !== null){gAPI.blurType = 'transparent';e.sender.send("blurTypeChanged", gAPI.blurType);}});
+  ipcMain.on("btAY", (e, value) => {const gAPI = BrowserWindow.fromWebContents(e.sender);if(gAPI !== null){gAPI.blurType = 'acrylic';e.sender.send("blurTypeChanged", gAPI.blurType);}});
+  ipcMain.on("btVB", (e, value) => {const gAPI = BrowserWindow.fromWebContents(e.sender);if(gAPI !== null){gAPI.blurType = 'vibrancy';e.sender.send("blurTypeChanged", gAPI.blurType);}});
+}
+
 function newDialogSample() {
   const dialogSample = new BrowserWindow({
     width: 600,
@@ -110,7 +140,6 @@ function newDialogSample() {
     resizable: false,
     maximizable: false,
     autoHideMenuBar: true,
-    titleBarStyle: global.titleBarStyle,
     webPreferences: {
       devTools: global.devMode,
       preload: path.join(__dirname, "../../js/electron/preload.js"),
@@ -135,7 +164,6 @@ function newDialogUpdateAvailable() {
     resizable: false,
     maximizable: false,
     autoHideMenuBar: true,
-    titleBarStyle: global.titleBarStyle,
     webPreferences: {
       devTools: global.devMode,
       preload: path.join(__dirname, "../../js/electron/preload.js"),
@@ -160,7 +188,6 @@ function newDialogUpdateFailed() {
     resizable: false,
     maximizable: false,
     autoHideMenuBar: true,
-    titleBarStyle: global.titleBarStyle,
     webPreferences: {
       devTools: global.devMode,
       preload: path.join(__dirname, "../../js/electron/preload.js"),
