@@ -15,7 +15,7 @@ html.windows .topNav {margin-top: 40px;}
 
 
 *:focus {outline: none;}
-::-webkit-scrollbar {width: 10px;height: 5px;background: #0e1a27;}
+::-webkit-scrollbar {width: 4px;height: 5px;background: #0e1a27;}
 ::-webkit-scrollbar-thumb {background: #2970cc;}
 webview#fullSize {height: 100%;width: 100%;display: inline-flex; position: absolute;}
 webview#client_panel_wv {height: 100%;width: 100%;display: inline-flex; position: absolute;}
@@ -300,7 +300,6 @@ p#dsec {
   }
 }
 
-
 button#messages {
   color: white;
   background: #474747;
@@ -392,3 +391,21 @@ div#st-id-sandbox button {
 
 button#up_downloading {display: none;}
 button#up_failed {display: none; background: rgb(255, 63, 63);}
+
+webview#article-view {
+  position: fixed;
+  top: 0px;
+  right: -100%;
+  width: calc(100% - 224px);
+  height: 100%;
+  transition: 0.4s right ease;
+}
+button#news-back {
+  position: fixed;
+  top: 29px;
+  left: 168px;
+  color: white;
+  background: transparent;
+  border: none;
+  display: none;
+}
