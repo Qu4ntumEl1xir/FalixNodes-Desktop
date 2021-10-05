@@ -1,4 +1,5 @@
-const {app, BrowserWindow, contextBridge, protocol, ipcMain, ipcRenderer, globalShortcut, Notification, shell, webContents} = require('electron')
+const {app, BrowserWindow, contextBridge, protocol, ipcMain, ipcRenderer, globalShortcut, Notification, session, shell, webContents} = require('electron')
+const contextMenu = require('electron-context-menu')
 const { autoUpdater } = require("electron-updater")
 const { fork } = require('child_process')
 const ps = fork(`${__dirname}/server.js`)
@@ -11,26 +12,26 @@ const os = require("os")
 autoUpdater.logger = log
 global.devMode = true
 
+
+
 let mainWindow;
 let dialogUpdateAvailable;
 
 if (process.platform == 'darwin') {
   app.whenReady().then(() => {
-    global.blur = "blurbehind"
+    global.blur = "vibrancy"
     global.frame = false
     global.titleBarStyle = 'hiddenInset'
 })}
 else if(process.platform == 'win32'){
   app.whenReady().then(() => {
-    global.blur = "blurbehind"
+    global.blur = "acrylic"
     global.frame = false
-    global.titleBarStyle = 'hidden'
 })}
 else{ 
   app.whenReady().then(() => {
     global.blur = "blurbehind"
     global.frame = true
-    global.titleBarStyle = 'hidden'
 })}
 
 function createWindow() {
@@ -77,12 +78,17 @@ function createWindow() {
   ipcMain.on('maximize',  () => {mainWindow.maximize()})
   ipcMain.on('restore',   () => {mainWindow.restore()})
   ipcMain.on('close',     () => {mainWindow.close()})
-
+  
+  ipcMain.on("blurToggleOn", async (e, value) => {if(mainWindow !== null){e.sender.send("blurStatus", await mainWindow.setBlur(true))}});
+  ipcMain.on("blurToggleOff", async (e, value) => {if(mainWindow !== null){e.sender.send("blurStatus", await mainWindow.setBlur(false))}});
+  
   ipcMain.on('open-sample-dialog',     () => {(newDialogSample())})
   ipcMain.on('open-update-dialog',     () => {(newDialogUpdateAvailable())})
   ipcMain.on('open-failed-dialog',     () => {(newDialogUpdateFailed())})
 
-  mainWindow.once('ready-to-show', () => {splashWindow.destroy(); mainWindow.show()});
+  ipcMain.on('demoCache',              () => {(demoCache())})
+
+  mainWindow.once('ready-to-show', () => {splashWindow.destroy(); mainWindow.show();});
 
   autoUpdater.on('update-available', (info) => {mainWindow.webContents.insertCSS('button#up_downloading {display: inherit !important;}')})
   autoUpdater.on('error', (err) => {mainWindow.webContents.insertCSS('button#up_failed {display: inherit !important;}')})
@@ -206,5 +212,20 @@ function newGP() {
   newCP.loadFile('./src/html/new-window/panel.html')
 }
 
+function demoCache() {session.clearCache()}
+
 app.whenReady().then(() => {createWindow();})
 setInterval(() => {autoUpdater.checkForUpdates();}, 300000);
+app.on("web-contents-created", (e, contents) => {
+  contextMenu({
+     window: contents,
+     showSaveImageAs: true,
+     showCopyImageAddress: true,
+     showCopyImage: true,
+     copyLink: true,
+     searchWithGoogle: false,
+     showSearchWithGoogle: false, // This won't work anyway
+     showInspectElement: false
+  });
+})
+

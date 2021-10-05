@@ -3,9 +3,7 @@
     <button class="st-nav-page" onclick="openStPage('st-id-account', this, 'var(--accent)')" style="margin-bottom: 20px;"><i class="fas fa-user-circle"></i> Account</button>
     <span id="divider"></span>
     <button class="st-nav-page" onclick="openStPage('st-id-about', this, 'var(--accent)')" id="st-sc-default_selection"><i class="fas fa-info-circle"></i> About</button>
-    <!-- <button class="st-nav-page" onclick="openStPage('st-id-account', this, 'var(--accent)')">Account</button> -->
     <button class="st-nav-page" onclick="openStPage('st-id-language', this, 'var(--accent)')"><i class="fas fa-language"></i> Language</button>
-    <!-- <button class="st-nav-page" onclick="openStPage('st-id-active_tab', this, 'var(--accent)')"><i class="fas fa-columns"></i> Active Tabs</button> -->
     <button class="st-nav-page" onclick="openStPage('st-id-appearance', this, 'var(--accent)')"><i class="fas fa-swatchbook"></i> Appearance</button>
     <button class="st-nav-page" onclick="openStPage('st-id-advance', this, 'var(--accent)')"><i class="fas fa-toolbox"></i> Advanced</button>
     <button class="st-nav-page" onclick="openStPage('st-id-sandbox', this, 'var(--accent)')" id="devMode-Sandbox"><i class="fas fa-box-open"></i> Sandbox</button>
@@ -15,7 +13,7 @@
     <div id="st-id-about" class="st-tab">
         <h1>Falix Software</h1>
         <p>Version: 3.4.1</p>
-        <p>Package Version: <span id="version"></span></p>
+        <p>Package Version: <span id="version"></span><span id="beforeLoad">Loading...</span></p>
         <h2>License</h2>
         <div class="scrollable-ta">
             <div include-html="./html/include/license.html"></div>
@@ -26,8 +24,6 @@
             <p>Electron Version: <span id="electron-version"></span></p>
             <p>Node Version: <span id="node-version"></span></p>
             <p>Chromium Version: <span id="chrome-version"></span></p>
-            <!-- <p>Generic Update Server: https://updates.korbsstudio.com</p>
-            <p>Protocols: falix://falix</p> -->
             <h3>Dependencies</h3>
             <div class="fa-pa">
                 <div class="fa-card">
@@ -64,10 +60,6 @@
                 </div>
             </div>
         </div>
-        <!-- <h2>Debug Information</h2>
-        <p>Package Version: v4.50.5</p>
-        <p>Node Version: </p>
-        <p>Update Server:</p> -->
     </div>
     <div id="st-id-language" class="st-tab">
         <div class="setting-fs">
@@ -97,10 +89,6 @@
                     <span id="lang_sel_do_gm"></span>
                     <p>German</p>
                 </div>
-                <!-- <div class="lang-se" onclick="setLanguage('./css/settings/language/arabic.css'); navigateTo('https://software.falixnodes.net/blank/');">
-                    <span id="lang_sel_do_ab"></span>
-                    <p>Arabic</p>
-                </div> -->
                 <div class="lang-se" onclick="setLanguage('./css/settings/language/bengali.css'); navigateTo('https://software.falixnodes.net/blank/');">
                     <span id="lang_sel_do_be"></span>
                     <p>Bengali</p>
@@ -124,9 +112,6 @@
             </div>
         </div>
     </div>
-    <!-- <div class="st-id-profile" class="st-tab">
-        <webview id="profile-settings" src="https://client.falixnodes.net/profile/settings"></webview>
-    </div> -->
     <div id="st-id-appearance" class="st-tab">
             <div class="setting-fs">
                 <h3><tp2 id="fs-ac"></tp2></h3>
@@ -148,14 +133,12 @@
 
                     <span id="toggle-rc-cm"></span>
                 </div>
-                <div style="opacity: 0.3; pointer-events: none;" class="toggle-fs">
-
-                    <span onclick="swapSidebarOpacity('./css/settings/sidebar-opacity/full.css')" id="ts-toggle-play_off"></span>
-                    <span onclick="swapSidebarOpacity('./css/settings/sidebar-opacity/90.css')" id="ts-toggle-play_on"></span>
-
-                    <p><t2p id="tog-ts"></t2p></p>
-
-                    <span id="toggle-ts-cm"></span>
+            </div>
+            <div class="setting-fs">
+                <h3>Window Blur</h3>
+                <div class="button-row-fs">
+                    <button onclick="setBlur('On')" id="blurOn">On</button>
+                    <button onclick="setBlur('Off')" id="blurOff">Off</button>
                 </div>
             </div>
         </div>
@@ -169,6 +152,9 @@
             
                     <span id="toggle-dm-cm"></span>
                 </div>
+                <div> WORK IN PROGRESS
+                    <button id="imoo" onclick="reset();"><tp2 id="fs-reset"></tp2></button>
+                </div>
             </div>        
         </div>
         <div id="st-id-sandbox" class="st-tab">
@@ -178,7 +164,7 @@
             <button onclick="window.api.send('open-update-dialog')">Update Dialog</button>
             <button onclick="window.api.send('open-sample-dialog')">Sample Dialog</button>
             <h2>Notifications</h2>
-            <button onclick="openInBrowser()">Opening in Browser...</button>
+            <p>Previous notification has been removed</p>
         </div>
     </div>
 </div>
@@ -203,7 +189,3 @@
 
 
 
-<!-- <div> WORK IN PROGRESS
-    <h3><tp2 id="fs-adv"></tp2></h3>
-    <button id="imoo" onclick="reset();"><tp2 id="fs-reset"></tp2></button>
-</div> -->
