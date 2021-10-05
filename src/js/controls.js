@@ -5,6 +5,7 @@ var webviewSP = document.getElementById('support_wv')
 var webviewAC = document.getElementById('account_wv')
 var webviewHC = document.getElementById('help_wv')
 var webviewSU = document.getElementById('uptime')
+var webviewAV = document.getElementById('article-view')
 
 // For Developers
 function CP_wvDevTools(){webviewCP.openDevTools()}
@@ -13,6 +14,13 @@ function SP_wvDevTools(){webviewSP.openDevTools()}
 function webviewAC(){webviewAC.openDevTools()}
 function webviewHC(){webviewHC.openDevTools()}
 function SU_wvDevTools(){webviewSU.openDevTools()}
+
+// Reset Function
+function logOutEverywhere() {
+  webviewCP.loadURL('https://client.falixnodes.net/logout')
+  webviewGP.loadURL('https://panel.falixnodes.net/auth/logout')
+  // Log out Discord somehow idk :)
+}
 
 // General Controls
 function CP_wvGoBack(){webviewCP.goBack()}
@@ -44,11 +52,11 @@ function unloadGamePanel() {
 //   const indicator = document.querySelector('.indicator')
 
 //   const loadstart = () => {
-//       console.log('Webview is loading')
+//     console.log('Webview is loading')
 //   }
 
 //   const loadstop = () => {
-//       console.log('Webview is done loading')
+//     setTimeout(function(){console.log('Webview is done loading')}, 7500);
 //   }
 
 //   webviewGP.addEventListener('did-start-loading', loadstart)
@@ -64,4 +72,9 @@ webview.addEventListener('dom-ready', function () {
 var webview_account = document.getElementById('account_wv');
 webview_account.addEventListener('dom-ready', function () {
     webview_account.insertCSS('nav.navbar.navbar-light.navbar-glass.navbar-top.navbar-expand {display: none !important;}.card-body.position-relative {display: none !important;}div#adngin-bottom_leaderboard_client_panel-0 {display: none !important;}')
+});
+
+var webview_account = document.getElementById('article-view');
+webview_account.addEventListener('dom-ready', function () {
+    webview_account.insertCSS('.tt.tu.tv.tw.tx.ty.n.cl, .n.cl.hu, .s.hu, .u.s.v {display: none !important;} a.eb.ec.cb.cc.cd.ce.cf.cg.ch.bn.tn.to.ci.tp.tq {position: absolute !important;left: 50% !important;transform: translate(-50%) !important;pointer-events: none !important;}')
 });

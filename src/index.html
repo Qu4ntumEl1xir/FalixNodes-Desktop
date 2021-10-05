@@ -31,7 +31,9 @@
         </div>
         <div class="content">
             <div id="news" class="page_content">
-                <div include-html="https://software.falixnodes.net/posts/"></div>
+                <div include-html="https://software.falixnodes.net/posts/sandbox.html"></div>
+                <webview id="article-view" src="http://127.0.0.1:9999/article-loading.html"></webview>
+                <button id="news-back" onclick="closeArticle()"><i class="fas fa-long-arrow-alt-left"></i></button>
                 <div id="nL" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             </div>
             <div id="client_panel" class="page_content">
@@ -59,9 +61,7 @@
         <script src="./js/hotkeys.js"></script>
         <script src="./js/controls.js"></script>
         
-        <script src="./js/notifications/dismissal.js"></script>
-
-        <script src="./js/ui/dim.js"></script>
+        <script src="./js/ui/article.js"></script>
         <script src="./js/ui/nav.js"></script>
         <script src="./js/ui/notify.js"></script>
         <script src="./js/ui/include.js"></script>
@@ -72,6 +72,12 @@
         <script src="./js/settings/accent-color.js"></script>
         <script src="./js/settings/developer-mode.js"></script>
         <script src="./js/settings/rounded-corners.js"></script>
+        <script src="./js/settings/blur-window.js"></script>
         <script>includeHTML();</script>
+        <script>
+            setTimeout(function(){
+                document.getElementById('beforeLoad').style.display = 'none';
+            }, 7400);
+        </script>
     </body>
 </html>
