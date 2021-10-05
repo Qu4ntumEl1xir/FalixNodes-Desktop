@@ -6,7 +6,6 @@ t2p#page-support::before {content: "Unterstützen";}
 t2p#page-help_center::before {content: "Hilfezentrum";}
 t2p#page-settings::before {content: "Einstellungen";}
 
-t2p#nd-Opening-in-brower::before {content: "Im Browser öffnen";}
 t2p#update_downloading::before {content: "Update verfügbar";}
 t2p#update_failed::before {content: "Update fehlgeschlagen";}
 t2p#netork_connection-lost::before {content: "Verbindung verloren";}

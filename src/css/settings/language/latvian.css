@@ -6,7 +6,6 @@ t2p#page-support::before {content: "Atbalsts";}
 t2p#page-help_center::before {content: "Palīdzības centrs";}
 t2p#page-settings::before {content: "Iestatījumi";}
 
-t2p#nd-Opening-in-brower::before {content: "Atvēršana pārlūkā";}
 t2p#update_downloading::before {content: "Atjaunināt lejupielādi";}
 t2p#update_failed::before {content: "Atjaunināšana neizdevās";}
 t2p#netork_connection-lost::before {content: "Savienojums zaudēts";}
