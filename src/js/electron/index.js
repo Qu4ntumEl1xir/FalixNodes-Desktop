@@ -80,10 +80,10 @@ function createWindow() {
   ipcMain.on("blurToggleOn", async (e, value) => {if(mainWindow !== null){e.sender.send("blurStatus", await mainWindow.setBlur(true))}});
   ipcMain.on("blurToggleOff", async (e, value) => {if(mainWindow !== null){e.sender.send("blurStatus", await mainWindow.setBlur(false))}});
 
-  ipcMain.on("btBH", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'blurbehind';e.sender.send("blurTypeChanged", mainWindow.blurType);}});
-  ipcMain.on("btTP", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'transparent';e.sender.send("blurTypeChanged", mainWindow.blurType);}});
-  ipcMain.on("btAY", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'acrylic';e.sender.send("blurTypeChanged", mainWindow.blurType);}});
-  ipcMain.on("btVB", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'vibrancy';e.sender.send("blurTypeChanged", mainWindow.blurType);}});
+  ipcMain.on("btBH", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'blurbehind';}});
+  ipcMain.on("btTP", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'transparent';}});
+  ipcMain.on("btAY", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'acrylic';}});
+  ipcMain.on("btVB", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'vibrancy';}});
   
   ipcMain.on('open-sample-dialog',     () => {(newDialogSample())})
   ipcMain.on('open-update-dialog',     () => {(newDialogUpdateAvailable())})

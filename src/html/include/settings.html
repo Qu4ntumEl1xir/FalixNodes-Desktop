@@ -143,12 +143,11 @@
             </div>
             <div class="setting-fs">
                 <h3>Blur Type</h3>
-                <p>The setting below is not setup yet to be saved. When you reload or restart the app, it'll switch back to default.</p>
                 <div class="button-row-fs">
-                    <button onclick="window.api.send('btBH')">Blurbehind</button>
-                    <button onclick="window.api.send('btTP')">Transparent</button>
-                    <button onclick="window.api.send('btAY')">Acrylic (Windows only)</button>
-                    <button onclick="window.api.send('btVB')">Vibrancy (macOS only)</button>
+                    <button onclick="setBlurType('btBH')">Blurbehind</button>
+                    <button onclick="setBlurType('btTP')">Transparent</button>
+                    <button onclick="setBlurType('btAY')">Acrylic (Windows only)</button>
+                    <button onclick="setBlurType('btVB')">Vibrancy (macOS only)</button>
                 </div>
             </div>
         </div>
