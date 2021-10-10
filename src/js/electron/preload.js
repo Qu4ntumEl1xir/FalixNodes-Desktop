@@ -1,6 +1,7 @@
 const { contextBridge, ipcRenderer} = require("electron");
 
 contextBridge.exposeInMainWorld( "api", { send: (channel, data) => {let validChannels = [
+  "launch",
   "minimize",
   "maximize",
   "restore",
