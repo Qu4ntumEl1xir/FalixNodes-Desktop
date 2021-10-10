@@ -1,4 +1,4 @@
-const {app, BrowserWindow, contextBridge, protocol, ipcMain, ipcRenderer, globalShortcut, Notification, session, shell, webContents} = require('electron')
+const {app, BrowserView, BrowserWindow, contextBridge, protocol, ipcMain, ipcRenderer, globalShortcut, Notification, session, shell, webContents} = require('electron')
 const contextMenu = require('electron-context-menu')
 const { autoUpdater } = require("electron-updater")
 const { fork } = require('child_process')
@@ -11,6 +11,10 @@ const url = require('url')
 const os = require("os")
 autoUpdater.logger = log
 global.devMode = true
+
+
+
+
 
 let mainWindow;
 let dialogUpdateAvailable;
@@ -39,7 +43,6 @@ function createWindow() {
     minWidth: 430,
     minHeight: 520,
     frame: global.frame,
-    transparent: true,
     show: false,
     autoHideMenuBar: true,
     titleBarStyle: global.titleBarStyle,
@@ -56,15 +59,15 @@ function createWindow() {
     frame: false,
     minimizable: false,
     maximizable: false,
-    transparent: true,
     skipTaskbar: true,
     center: true,
-    width: 382,
-    height: 382,
-    resizable: false,
+    width: 700,
+    height: 184,
+    resizable: true,
     blur: true,
     blurType: global.blur,
     webPreferences: {
+      preload: path.join(__dirname, "../../js/electron/preload.js"),
       devTools: global.devMode
     }
   })
@@ -80,10 +83,10 @@ function createWindow() {
   ipcMain.on("blurToggleOn", async (e, value) => {if(mainWindow !== null){e.sender.send("blurStatus", await mainWindow.setBlur(true))}});
   ipcMain.on("blurToggleOff", async (e, value) => {if(mainWindow !== null){e.sender.send("blurStatus", await mainWindow.setBlur(false))}});
 
-  ipcMain.on("btBH", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'blurbehind';}});
-  ipcMain.on("btTP", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'transparent';}});
-  ipcMain.on("btAY", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'acrylic';}});
-  ipcMain.on("btVB", (e, value) => {const mainWindow = BrowserWindow.fromWebContents(e.sender);if(mainWindow !== null){mainWindow.blurType = 'vibrancy';}});
+  ipcMain.on("btBH", () => {mainWindow.blurType = 'blurbehind';});
+  ipcMain.on("btTP", () => {mainWindow.blurType = 'transparent';});
+  ipcMain.on("btAY", () => {mainWindow.blurType = 'acrylic';});
+  ipcMain.on("btVB", () => {mainWindow.blurType = 'vibrancy';});
   
   ipcMain.on('open-sample-dialog',     () => {(newDialogSample())})
   ipcMain.on('open-update-dialog',     () => {(newDialogUpdateAvailable())})
@@ -91,9 +94,7 @@ function createWindow() {
 
   ipcMain.on('open-glasstron-api-demo', () => {(glasstronAPIDemo())})
 
-  ipcMain.on('demoCache',              () => {(demoCache())})
-
-  mainWindow.once('ready-to-show', () => {splashWindow.destroy(); mainWindow.show();});
+  ipcMain.on('launch',              () => {splashWindow.close(); mainWindow.show()})
 
   autoUpdater.on('update-available', (info) => {mainWindow.webContents.insertCSS('button#up_downloading {display: inherit !important;}')})
   autoUpdater.on('error', (err) => {mainWindow.webContents.insertCSS('button#up_failed {display: inherit !important;}')})
@@ -110,7 +111,6 @@ function glasstronAPIDemo() {
   const gAPI = new glasstron.BrowserWindow({
     width: 600,
     height: 450,
-    transparent: true,
     frame: false,
     blur: true,
     blurType: global.blur,
@@ -136,7 +136,6 @@ function newDialogSample() {
     width: 600,
     height: 250,
     frame: false,
-    transparent: true,
     resizable: false,
     maximizable: false,
     autoHideMenuBar: true,
@@ -160,7 +159,6 @@ function newDialogUpdateAvailable() {
     width: 600,
     height: 250,
     frame: false,
-    transparent: true,
     resizable: false,
     maximizable: false,
     autoHideMenuBar: true,
@@ -184,7 +182,6 @@ function newDialogUpdateFailed() {
     width: 600,
     height: 300,
     frame: false,
-    transparent: true,
     resizable: false,
     maximizable: false,
     autoHideMenuBar: true,
@@ -208,7 +205,6 @@ function newCP() {
     minWidth: 400,
     minHeight: 320,
     frame: global.frame,
-    transparent: true,
     autoHideMenuBar: true,
     titleBarStyle: global.titleBarStyle,
     webPreferences: {
@@ -227,7 +223,6 @@ function newGP() {
     minWidth: 400,
     minHeight: 320,
     frame: global.frame,
-    transparent: true,
     autoHideMenuBar: true,
     titleBarStyle: global.titleBarStyle,
     webPreferences: {
@@ -242,6 +237,7 @@ function newGP() {
 function demoCache() {session.clearCache()}
 
 app.whenReady().then(() => {createWindow();})
+app.allowRendererProcessReuse = true
 setInterval(() => {autoUpdater.checkForUpdates();}, 300000);
 app.on("web-contents-created", (e, contents) => {
   contextMenu({
@@ -255,4 +251,3 @@ app.on("web-contents-created", (e, contents) => {
      showInspectElement: false
   });
 })
-
