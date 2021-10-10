@@ -7,6 +7,8 @@ var webviewHC = document.getElementById('help_wv')
 var webviewSU = document.getElementById('uptime')
 var webviewAV = document.getElementById('article-view')
 
+webviewHC
+
 // For Developers
 function CP_wvDevTools(){webviewCP.openDevTools()}
 function wvDevTools(){webviewGP.openDevTools()}
@@ -47,21 +49,43 @@ function unloadGamePanel() {
 }
 
 
-// Detect Loading State
-// onload = () => {
-//   const indicator = document.querySelector('.indicator')
+onload = () => {
+  const loadingAV = document.querySelector('.IndicatorAV')
+  const loadingCP = document.querySelector('.IndicatorCP')
+  const loadingGP = document.querySelector('.IndicatorGP')
+  const loadingHC = document.querySelector('.IndicatorHC')
+  const loadingAC = document.querySelector('.IndicatorSE')
 
-//   const loadstart = () => {
-//     console.log('Webview is loading')
-//   }
+  const loadstartAV = () => {document.getElementById('IndicatorAV').style.display='unset'}
+  const loadstopAV = () => {setTimeout(function(){document.getElementById('IndicatorAV').style.display='none'}, 500);}
 
-//   const loadstop = () => {
-//     setTimeout(function(){console.log('Webview is done loading')}, 7500);
-//   }
+  const loadstartCP = () => {document.getElementById('IndicatorCP').style.display='unset'}
+  const loadstopCP = () => {setTimeout(function(){document.getElementById('IndicatorCP').style.display='none'}, 500);}
 
-//   webviewGP.addEventListener('did-start-loading', loadstart)
-//   webviewGP.addEventListener('did-stop-loading', loadstop)
-// }
+  const loadstartGP = () => {document.getElementById('IndicatorGP').style.display='unset'}
+  const loadstopGP = () => {setTimeout(function(){document.getElementById('IndicatorGP').style.display='none'}, 500);}
+
+  const loadstartHC = () => {document.getElementById('IndicatorHC').style.display='unset'}
+  const loadstopHC = () => {setTimeout(function(){document.getElementById('IndicatorHC').style.display='none'}, 500);}
+
+  const loadstartAC = () => {document.getElementById('IndicatorSE').style.display='unset'}
+  const loadstopAC = () => {setTimeout(function(){document.getElementById('IndicatorSE').style.display='none'}, 500);}
+
+  webviewAV.addEventListener('did-start-loading', loadstartAV)
+  webviewAV.addEventListener('did-stop-loading', loadstopAV)
+
+  webviewCP.addEventListener('did-start-loading', loadstartCP)
+  webviewCP.addEventListener('did-stop-loading', loadstopCP)
+
+  webviewGP.addEventListener('did-start-loading', loadstartGP)
+  webviewGP.addEventListener('did-stop-loading', loadstopGP)
+
+  webviewHC.addEventListener('did-start-loading', loadstartHC)
+  webviewHC.addEventListener('did-stop-loading', loadstopHC)
+
+  webviewAC.addEventListener('did-start-loading', loadstartAC)
+  webviewAC.addEventListener('did-stop-loading', loadstopAC)
+}
 
 
 var webview = document.getElementById('uptime');
@@ -76,5 +100,5 @@ webview_account.addEventListener('dom-ready', function () {
 
 var webview_account = document.getElementById('article-view');
 webview_account.addEventListener('dom-ready', function () {
-    webview_account.insertCSS('.tt.tu.tv.tw.tx.ty.n.cl, .n.cl.hu, .s.hu, .u.s.v {display: none !important;} a.eb.ec.cb.cc.cd.ce.cf.cg.ch.bn.tn.to.ci.tp.tq {position: absolute !important;left: 50% !important;transform: translate(-50%) !important;pointer-events: none !important;}')
+    webview_account.insertCSS('.n.cl.hu,.n.cl.ib,.s.hu,.s.ib,.tf.s.tg.th,.tt.tu.tv.tw.tx.ty.n.cl,.u.s.v,.ul.um.un.uo.lx.up.wd{display:none!important}a.eb.ec.cb.cc.cd.ce.cf.cg.ch.bn.tn.to.ci.tp.tq{position:absolute!important;left:50%!important;transform:translate(-50%)!important;pointer-events:none!important}img.x.it.iu{border-radius:7px!important}.acm{background-color:transparent;backdrop-filter:blur(8px)!important}h1#\30 049{font-size:36px!important}::-webkit-scrollbar{width:0!important}')
 });
