@@ -13,13 +13,12 @@
     "electron-context-menu": "^3.1.1",
     "electron-log": "^4.4.1",
     "electron-updater": "^4.3.9",
-    "node-static": "^0.7.11"
+    "node-static": "^0.7.11",
+    "glasstron": "^0.1.0"
   },
   "devDependencies": {
     "electron": "^15.0.0",
-    "electron-builder": "^22.11.7",
-    "electron-nightly": "^17.0.0-nightly.20211001",
-    "glasstron": "^0.1.0"
+    "electron-builder": "^22.11.7"
   },
   "build": {
     "publish": {
