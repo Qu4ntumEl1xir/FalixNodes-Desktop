@@ -12,6 +12,7 @@ t2p#netork_connection-lost::before {content: "Connection lost";}
 t2p#netork_connection-restored::before {content: "Connection Restored";}
 
 t2p#h1-settings::before {content: "Settings";}
+tp2#loe::before {content: "Log Everything Out";}
 t2p#h2-app::before {content: "Application";}
 t2p#fs-language::before {content: "Language";}
 t2p#fs-devMode::before {content: "Developer Mode";}

@@ -12,10 +12,6 @@ const os = require("os")
 autoUpdater.logger = log
 global.devMode = true
 
-
-
-
-
 let mainWindow;
 let dialogUpdateAvailable;
 

@@ -17,11 +17,10 @@ function webviewAC(){webviewAC.openDevTools()}
 function webviewHC(){webviewHC.openDevTools()}
 function SU_wvDevTools(){webviewSU.openDevTools()}
 
-// Reset Function
+// Log Out Function
 function logOutEverywhere() {
   webviewCP.loadURL('https://client.falixnodes.net/logout')
   webviewGP.loadURL('https://panel.falixnodes.net/auth/logout')
-  // Log out Discord somehow idk :)
 }
 
 // General Controls
