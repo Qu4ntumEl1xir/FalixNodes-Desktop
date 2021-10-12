@@ -12,4 +12,4 @@ if(url.startsWith("https://falixnodes.net/")
 || url.startsWith("https://blog.falixnodes.net/")
 || url.startsWith("https://updates.korbsstudio.com/")
 )
-{} else {setTimeout(() => {location.href = 'http://localhost:9999/domain-access.html'}, 500);}
+{} else {setTimeout(() => {location.href = 'http://localhost:9999'}, 250);}
