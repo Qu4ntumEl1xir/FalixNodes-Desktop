@@ -1,0 +1,146 @@
+body {
+    font-family: Poppins;
+    color: white;
+    background: #00000073;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 250px;
+    height: 100%;
+}
+
+.content {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: calc(100% - 290px);
+    height: calc(100% - 40px);
+    background: #00000073;
+    border-radius: 10px;
+}
+
+
+.sb-header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: #00000073;
+    margin: 20px;
+    width: 230px;
+    border-radius: 7px;
+    height: 45px;
+    cursor: default;
+}
+span#sb-header-selected {
+    background: #3a3ab0b8;
+    width: 63px;
+    height: 30px;
+    position: absolute;
+    margin: 7px 7px 7px 7px;
+    border-radius: 4px;
+    transition: 0.3s margin;
+}
+.sb-header-left button {
+    position: absolute;
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 9px;
+}
+.sb-header-right {
+    position: absolute;
+    right: 0px;
+    margin: 9px;
+    display: block;
+    text-align: right;
+}
+.sb-header-right button {
+    background: #ff000000;
+    color: white;
+    border: none;
+}
+
+.sb-navigation {
+    position: fixed;
+    margin: 21px;
+    top: 58px;
+    width: 230px;
+    display: grid;
+}
+.sb-navigation button {
+    color: white;
+    background: rgb(84 84 255 / 50%);
+    border: 2px #ffffff00 solid;
+    margin-bottom: 5px;
+    padding: 6px 0px 6px 45px;
+    border-radius: 4px;
+    text-align: left;
+}
+.sb-navigation button i {
+    position: absolute;
+    text-align: center;
+    margin-top: 2px;
+    margin-left: -28px;
+}
+
+.notification-card h1 {font-size: 16px;}
+.notification-card p {margin-left: -29px;}
+
+.nv-webview-controls {cursor: default;}
+.wb-ct-client {
+    position: absolute;
+    top: 3px;
+    right: 6px;
+}
+.wb-ct-client control {
+    font-size: 14px;
+    padding: 2px 4.14px;
+    border-radius: 3px;
+}
+.wb-ct-client control:hover {background: #7b7bffb8;}
+
+control#addTab {
+    background: rgb(84 84 255 / 25%);
+    width: 30px;
+    height: 31px;
+    position: absolute;
+    left: 0px;
+    margin-top: -8px;
+    border-radius: 4px;
+}
+control#addTab i {
+    position: absolute;
+    left: 37px;
+    margin-top: 9px;
+}
+
+
+.swm-content {
+    position: absolute;
+    top: 50%;
+    left: 230px;
+    transform: translate(0px, -50%);
+    line-height: 20px;
+}
+.view-side {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    height: calc(100% - 30px);
+    background: #36363659;
+    border-radius: 7px;
+    margin: 15px;
+}
+.view-side i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 90px;
+}

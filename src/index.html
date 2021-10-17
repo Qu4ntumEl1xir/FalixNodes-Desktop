@@ -8,11 +8,94 @@
         <link rel="stylesheet" href="./css/titlebar.css">
         <link rel="stylesheet" href="./fonts/fontawesome-pro-6.0.0-beta2-web/css/all.css">
         <!-- CSS - Configurations -->
+        <!-- JS - Configurations -->
+        <!-- JS - User Interface -->
+        <script src="./js/user-interface/sidebar-navigation.js"></script>
+        <!-- JS - Other Functions -->
     </head>
-    <body>
+    <body onload="sidebarHeader_default();">
         <div class="onboarding"></div>
         <div class="dialogs"></div>
-        <div class="sidebar"></div>
-        <div class="content"></div>
+        <div class="sidebar">
+            <div class="sb-header">
+                <span id="sb-header-selected"></span>
+                <div class="sb-header-left">
+                    <button onclick="sidebarHeader_default();">Falix</button>
+                </div>
+                <div class="sb-header-right">
+                    <button onclick="sidebarHeader_notifications();"><i class="fa-solid fa-bell"></i></button>
+                    <button onclick="sidebarHeader_settings();"><i class="fa-duotone fa-gears"></i></button>
+                </div>
+            </div>
+            <div id="nv-default" class="sb-navigation">
+                <button style="margin-left: 34px;"><control id="addTab"><i class="fa-duotone fa-plus"></i></control><i class="fa-duotone fa-id-card"></i> Client</button>
+                <button style="margin-left: 34px;"><control id="addTab"><i class="fa-duotone fa-plus"></i></control><i class="fa-duotone fa-server"></i> Servers</button>
+                <div class="nv-webview-controls">
+                    <div class="wb-ct-client">
+                        <control><i class="fa-duotone fa-house-chimney"></i></control>
+                        <control><i class="fa-duotone fa-rotate"></i></control>
+                        <control><i class="fa-duotone fa-arrow-left-long"></i></control>
+                        <control><i class="fa-duotone fa-arrow-right-long"></i></control>
+                    </div>
+                </div>
+            </div>
+            <div id="nv-notifications" class="sb-navigation">
+                <button class="notification-card">
+                    <h1><i class="fa-duotone fa-wifi-exclamation"></i> Network Error</h1>
+                    <p>FalixNodes Software appears to be having issues connecting to the internet.</p>
+                </button>
+                <button class="notification-card">
+                    <h1><i class="fa-duotone fa-audio-description-slash"></i> Adblock Detected</h1>
+                    <p>An adblock has been detected, FalixNodes Software will not allow you to view your panels while it's enabled. Please disable it to continue.</p>
+                </button>
+                <button class="notification-card">
+                    <h1><i class="fa-duotone fa-spinner-third fa-spin"></i> New Update</h1>
+                    <p>A new update is downloading...</p>
+                </button>
+            </div>
+            <div id="nv-settings" class="sb-navigation">
+                <button><i class="fa-duotone fa-business-time"></i> Uptime</button>
+                <button><i class="fa-duotone fa-circle-user"></i> Account</button>
+                <button><i class="fa-duotone fa-info"></i> About</button>
+                <button><i class="fa-duotone fa-language"></i> Language</button>
+                <button><i class="fa-duotone fa-command"></i> Keyboard Shortcuts</button>
+                <button><i class="fa-duotone fa-swatchbook"></i> Appearance</button>
+                <button><i class="fa-duotone fa-code-simple"></i> Developer</button>
+            </div>
+        </div>
+        <div class="content">
+            <div class="swm" id="security-warning-message">
+                <div class="view-side">
+                    <i class="fa-duotone fa-shield"></i>
+                </div>
+                <div class="swm-content">
+                    <h1>Security Warning</h1>
+                    <p>This embed was trying to load a URL outside of FalixNodes.net.</p>
+                </div>
+            </div>
+            <div class="swm" id="verified-URLs">
+                <div class="view-side">
+                    <i class="fa-duotone fa-badge-check"></i>
+                </div>
+                <div class="swm-content">
+                    <h1>Verified URLs</h1>
+                    <p>The following URLs are allowed to be viewed:</p>
+                </div>
+            </div>
+            <div class="swm" id="dead-page">
+                <div class="view-side">
+                    <i class="fa-duotone fa-file-xmark"></i>
+                </div>
+                <div class="swm-content">
+                    <h1>Something Went Wrong!</h1>
+                    <p>The content you're trying to view doesn't seem to be loading. There are a few reasons for this:</p>
+                    <ui>
+                        <li>FalixNodes Software can't connect to the internet, please view your notifications to see if this is true.</li>
+                        <li>The website is down.</li>
+                        <li>DNS issue.</li>
+                    </ui>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

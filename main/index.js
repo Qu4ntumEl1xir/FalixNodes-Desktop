@@ -47,6 +47,8 @@ function createWindow() {
       devTools: global.devMode
     }
   })
+
+  mainWindow.loadFile('src/index.html')
 }
 
 app.whenReady().then(() => {createWindow()})
