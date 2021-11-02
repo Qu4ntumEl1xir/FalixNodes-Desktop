@@ -1,146 +1,148 @@
+:root {
+    --accent: #2970cc;
+}
+
 body {
-    font-family: Poppins;
+    font-family: 'Poppins';
     color: white;
-    background: #00000073;
+    background: rgb(10 22 38 / 83%);
+}
+
+.full-size {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    width: 100%;
+    height: calc(100% - 40px);
 }
 
 .sidebar {
     position: fixed;
     top: 0px;
     left: 0px;
-    width: 250px;
+    width: 300px;
     height: 100%;
 }
-
-.content {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: calc(100% - 290px);
-    height: calc(100% - 40px);
-    background: #00000073;
-    border-radius: 10px;
+.sidebar h1 {
+    font-size: 18px;
+    margin: 7px 20px 20px 20px;
+    position: absolute;
 }
-
 
 .sb-header {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    background: #00000073;
-    margin: 20px;
-    width: 230px;
-    border-radius: 7px;
-    height: 45px;
-    cursor: default;
+    margin: 0px;
+    height: 83px;
+    display: flex;
+    background: rgb(6 13 21 / 70%);
 }
 span#sb-header-selected {
-    background: #3a3ab0b8;
-    width: 63px;
-    height: 30px;
+    background: var(--accent);
+    height: 4px;
+    top: 72px;
     position: absolute;
-    margin: 7px 7px 7px 7px;
-    border-radius: 4px;
-    transition: 0.3s margin;
+    transition: 0.3s width ease, 0.4s margin ease;
 }
-.sb-header-left button {
+span#nv-default-selected {
+    background: var(--accent);
     position: absolute;
-    background: transparent;
+    width: 300px;
+    height: 35px;
+    z-index: -1;
+    opacity: 0.3;
+    transition: 0.3s top;
+    top: 0px;
+}
+.sb-header button {
     border: none;
     color: white;
+    background: transparent;
+    border-radius: 7px;
+    padding: 8px 10px;
+    margin: 4px;
     font-weight: bold;
-    font-size: 20px;
-    margin: 9px;
+}
+.sb-header button in {
+    transition: 0.3s font-size ease;
+}
+.sb-header-left {
+    position: absolute;
+    top: 40px;
+    left: 6px;
 }
 .sb-header-right {
     position: absolute;
-    right: 0px;
-    margin: 9px;
-    display: block;
-    text-align: right;
+    top: 40px;
+    right: 20px;
 }
 .sb-header-right button {
-    background: #ff000000;
-    color: white;
-    border: none;
+    margin-right: -4px;
 }
 
 .sb-navigation {
-    position: fixed;
-    margin: 21px;
-    top: 58px;
-    width: 230px;
-    display: grid;
+    margin-top: 20px;
 }
 .sb-navigation button {
-    color: white;
-    background: rgb(84 84 255 / 50%);
-    border: 2px #ffffff00 solid;
-    margin-bottom: 5px;
-    padding: 6px 0px 6px 45px;
-    border-radius: 4px;
+    border: none;
     text-align: left;
+    color: white;
+    font-weight: bold;
+    background: transparent;
+    padding: 10px 0px 10px 23px;
+    border-left: 5px transparent solid;
 }
+.sb-navigation button:hover {background: rgb(11 23 39 / 10%);}
 .sb-navigation button i {
-    position: absolute;
-    text-align: center;
-    margin-top: 2px;
-    margin-left: -28px;
+    margin-right: 7px;
 }
 
-.notification-card h1 {font-size: 16px;}
-.notification-card p {margin-left: -29px;}
-
-.nv-webview-controls {cursor: default;}
-.wb-ct-client {
-    position: absolute;
-    top: 3px;
-    right: 6px;
+button.notification-card {
+    padding: 0px 14px;
 }
-.wb-ct-client control {
-    font-size: 14px;
-    padding: 2px 4.14px;
-    border-radius: 3px;
+button.notification-card h1 {
+    font-size: 16px;
+    margin-left: 34px;
 }
-.wb-ct-client control:hover {background: #7b7bffb8;}
-
-control#addTab {
-    background: rgb(84 84 255 / 25%);
-    width: 30px;
-    height: 31px;
+button.notification-card i {
     position: absolute;
-    left: 0px;
-    margin-top: -8px;
-    border-radius: 4px;
-}
-control#addTab i {
-    position: absolute;
-    left: 37px;
-    margin-top: 9px;
+    left: 40px;
 }
 
-
-.swm-content {
+.content {
     position: absolute;
-    top: 50%;
-    left: 230px;
-    transform: translate(0px, -50%);
-    line-height: 20px;
+    top: 0px;
+    right: 0px;
+    width: calc(100% - 300px);
+    height: calc(100% - 0px);
+    background: rgb(11 23 39 / 70%);
 }
-.view-side {
+
+.topbar-view {
+    cursor: default;
     position: absolute;
     top: 0px;
     left: 0px;
-    width: 200px;
-    height: calc(100% - 30px);
-    background: #36363659;
-    border-radius: 7px;
-    margin: 15px;
+    width: 100%;
+    background: rgb(11 23 39 / 25%);
+    height: 40px;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
 }
-.view-side i {
+.topbar-view h1 {
+    font-size: 18px;
+    margin: 7px 0px 0px 20px;
+}
+.topbar-view control {
+    padding: 4px 7.5px;
+    border-radius: 4px;
+}
+.topbar-view control:hover {
+    background: rgb(41 112 204 / 50%);
+}
+.controls-main {
+    margin: 7px 0px 0px 15px;
+}
+.controls-optional {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 90px;
+    margin: 7px 0px 0px 20px;
+    right: 25px;
 }

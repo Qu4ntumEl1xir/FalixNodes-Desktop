@@ -1,0 +1,27 @@
+body {
+    background: #2970cc;
+    color: white;
+    font-family: 'Poppins';
+}
+
+h1, p, i {pointer-events: none;}
+::selection {color: rgba(0, 0, 0, 0.8); background: transparent;}
+
+div#security-warning-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    display: grid;
+}
+
+div#security-warning-message {
+    grid-template-columns: 100px 500px;
+    grid-gap: 40px;
+}
+.view-side i {font-size: 80px;}
+.view-side {
+    text-align: center;
+    align-self: center;
+}

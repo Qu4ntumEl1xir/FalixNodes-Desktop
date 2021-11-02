@@ -10,34 +10,30 @@
         <!-- CSS - Configurations -->
         <!-- JS - Configurations -->
         <!-- JS - User Interface -->
-        <script src="./js/user-interface/sidebar-navigation.js"></script>
+        <script src="js/user-interface/sidebar-header.js"></script>
+        <script src="js/user-interface/sidebar-navigation.js"></script>
         <!-- JS - Other Functions -->
     </head>
-    <body onload="sidebarHeader_default();">
+    <body onload="sidebarHeader_default(); selectClientDE();">
         <div class="onboarding"></div>
         <div class="dialogs"></div>
         <div class="sidebar">
             <div class="sb-header">
+                <h1>FalixNodes Desktop</h1>
                 <span id="sb-header-selected"></span>
                 <div class="sb-header-left">
-                    <button onclick="sidebarHeader_default();">Falix</button>
+                    <button onclick="sidebarHeader_default();"><i class="fa-duotone fa-sidebar"></i> <in id="sb-header-text-default">Dashboard</in></button>
                 </div>
                 <div class="sb-header-right">
-                    <button onclick="sidebarHeader_notifications();"><i class="fa-solid fa-bell"></i></button>
-                    <button onclick="sidebarHeader_settings();"><i class="fa-duotone fa-gears"></i></button>
+                    <button onclick="sidebarHeader_notifications();"><i class="fa-duotone fa-bell"></i> <in id="sb-header-text-notifications">Notifications</in></button>
+                    <button onclick="sidebarHeader_settings();"><i class="fa-duotone fa-gears"></i> <in id="sb-header-text-settings">Settings</in></button>
                 </div>
             </div>
             <div id="nv-default" class="sb-navigation">
-                <button style="margin-left: 34px;"><control id="addTab"><i class="fa-duotone fa-plus"></i></control><i class="fa-duotone fa-id-card"></i> Client</button>
-                <button style="margin-left: 34px;"><control id="addTab"><i class="fa-duotone fa-plus"></i></control><i class="fa-duotone fa-server"></i> Servers</button>
-                <div class="nv-webview-controls">
-                    <div class="wb-ct-client">
-                        <control><i class="fa-duotone fa-house-chimney"></i></control>
-                        <control><i class="fa-duotone fa-rotate"></i></control>
-                        <control><i class="fa-duotone fa-arrow-left-long"></i></control>
-                        <control><i class="fa-duotone fa-arrow-right-long"></i></control>
-                    </div>
-                </div>
+                <span id="nv-default-selected"></span>
+                <button onclick="hideAll(); selectNewsDE()" id="tab-news"><i class="fa-duotone fa-newspaper"></i> News</button>
+                <button onclick="hideAll(); selectClientDE()" id="tab-client"><i class="fa-duotone fa-id-card"></i> Client</button>
+                <button onclick="hideAll(); selectServersDE()" id="tab-servers"><i class="fa-duotone fa-server"></i> Servers</button>
             </div>
             <div id="nv-notifications" class="sb-navigation">
                 <button class="notification-card">
@@ -64,38 +60,23 @@
             </div>
         </div>
         <div class="content">
-            <div class="swm" id="security-warning-message">
-                <div class="view-side">
-                    <i class="fa-duotone fa-shield"></i>
+            <div id="client-panel" class="tab-view">
+                <div class="topbar-view">
+                    <h1>Client Panel</h1>
+                    <div class="controls-main">
+                        <control onclick="clientHome()"><i class="fa-duotone fa-house-chimney"></i></control>
+                        <control onclick="clientReload()"><i class="fa-duotone fa-rotate"></i></control>
+                        <control onclick="clientGoBack()"><i class="fa-duotone fa-arrow-left-long"></i></control>
+                        <control onclick="clientGoForward()"><i class="fa-duotone fa-arrow-right-long"></i></control>
+                    </div>
+                    <div class="controls-optional">
+<!--                        <control onclick="clientFS()"><i class="fa-duotone fa-arrow-up-right-and-arrow-down-left-from-center"></i></control>-->
+                        <control onclick="clientDev()"><i class="fa-duotone fa-rectangle-code"></i></control>
+                    </div>
                 </div>
-                <div class="swm-content">
-                    <h1>Security Warning</h1>
-                    <p>This embed was trying to load a URL outside of FalixNodes.net.</p>
-                </div>
-            </div>
-            <div class="swm" id="verified-URLs">
-                <div class="view-side">
-                    <i class="fa-duotone fa-badge-check"></i>
-                </div>
-                <div class="swm-content">
-                    <h1>Verified URLs</h1>
-                    <p>The following URLs are allowed to be viewed:</p>
-                </div>
-            </div>
-            <div class="swm" id="dead-page">
-                <div class="view-side">
-                    <i class="fa-duotone fa-file-xmark"></i>
-                </div>
-                <div class="swm-content">
-                    <h1>Something Went Wrong!</h1>
-                    <p>The content you're trying to view doesn't seem to be loading. There are a few reasons for this:</p>
-                    <ui>
-                        <li>FalixNodes Software can't connect to the internet, please view your notifications to see if this is true.</li>
-                        <li>The website is down.</li>
-                        <li>DNS issue.</li>
-                    </ui>
-                </div>
+                <webview id="client-webview" class="full-size" src="https://client.falixnodes.net"></webview>
             </div>
         </div>
+        <script src="js/webview/controls.js"></script>
     </body>
 </html>
