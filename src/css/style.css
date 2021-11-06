@@ -1,148 +1,81 @@
-:root {
-    --accent: #2970cc;
-}
-
 body {
-    font-family: 'Poppins';
+    background: rgba(0, 0, 0, 0.7);
     color: white;
-    background: rgb(10 22 38 / 83%);
-}
-
-.full-size {
-    position: absolute;
-    top: 40px;
-    left: 0px;
-    width: 100%;
-    height: calc(100% - 40px);
+    font-family: 'Poppins';
+    overflow: hidden;
 }
 
 .sidebar {
     position: fixed;
     top: 0px;
     left: 0px;
-    width: 300px;
+    width: 240px;
     height: 100%;
 }
-.sidebar h1 {
-    font-size: 18px;
-    margin: 7px 20px 20px 20px;
-    position: absolute;
-}
-
-.sb-header {
-    margin: 0px;
-    height: 83px;
-    display: flex;
-    background: rgb(6 13 21 / 70%);
-}
-span#sb-header-selected {
-    background: var(--accent);
-    height: 4px;
-    top: 72px;
-    position: absolute;
-    transition: 0.3s width ease, 0.4s margin ease;
-}
-span#nv-default-selected {
-    background: var(--accent);
-    position: absolute;
-    width: 300px;
-    height: 35px;
-    z-index: -1;
-    opacity: 0.3;
-    transition: 0.3s top;
-    top: 0px;
-}
-.sb-header button {
-    border: none;
+.sidebar button {
+    cursor: pointer;
+    background: rgba(50,50,50,1);
     color: white;
-    background: transparent;
-    border-radius: 7px;
-    padding: 8px 10px;
-    margin: 4px;
-    font-weight: bold;
-}
-.sb-header button in {
-    transition: 0.3s font-size ease;
-}
-.sb-header-left {
-    position: absolute;
-    top: 40px;
-    left: 6px;
-}
-.sb-header-right {
-    position: absolute;
-    top: 40px;
-    right: 20px;
-}
-.sb-header-right button {
-    margin-right: -4px;
-}
-
-.sb-navigation {
-    margin-top: 20px;
-}
-.sb-navigation button {
     border: none;
+    width: 100%;
+    border-radius: 4px;
+    padding: 8px 0px 8px 15px;
+    margin-bottom: 9px;
     text-align: left;
-    color: white;
-    font-weight: bold;
-    background: transparent;
-    padding: 10px 0px 10px 23px;
-    border-left: 5px transparent solid;
 }
-.sb-navigation button:hover {background: rgb(11 23 39 / 10%);}
-.sb-navigation button i {
-    margin-right: 7px;
+.sidebar-top-area, .sidebar-bottom-area {
+    margin: 15px;
 }
-
-button.notification-card {
-    padding: 0px 14px;
-}
-button.notification-card h1 {
-    font-size: 16px;
-    margin-left: 34px;
-}
-button.notification-card i {
+.sidebar-bottom-area {
     position: absolute;
-    left: 40px;
+    bottom: 0px;
+    width: -webkit-fill-available;
 }
 
 .content {
     position: absolute;
+    left: 240px;
     top: 0px;
-    right: 0px;
-    width: calc(100% - 300px);
-    height: calc(100% - 0px);
-    background: rgb(11 23 39 / 70%);
+    background: transparent;
+    width: calc(100% - 240px);
+    height: 100%;
 }
 
-.topbar-view {
-    cursor: default;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+.sidebar-settings {
+    display: grid;
+    width: 240px;
+    margin: 15px;
+}
+.sidebar-settings button {
+    cursor: pointer;
+    background: rgba(50,50,50,1);
+    color: white;
+    border: none;
     width: 100%;
-    background: rgb(11 23 39 / 25%);
-    height: 40px;
-    border-radius: 10px 10px 0px 0px;
-    display: flex;
-}
-.topbar-view h1 {
-    font-size: 18px;
-    margin: 7px 0px 0px 20px;
-}
-.topbar-view control {
-    padding: 4px 7.5px;
     border-radius: 4px;
+    padding: 8px 0px 8px 15px;
+    margin-bottom: 9px;
+    text-align: left;
 }
-.topbar-view control:hover {
-    background: rgb(41 112 204 / 50%);
-}
-.controls-main {
-    margin: 7px 0px 0px 15px;
-}
-.controls-optional {
+.content-settings {
     position: absolute;
-    margin: 7px 0px 0px 20px;
-    right: 25px;
+    background: #323232;
+    left: 270px;
+    top: 0px;
+    width: calc(100% - 360px);
+    height: calc(100% - 30px);
+    margin: 15px;
+    border-radius: 7px;
+    overflow: auto;
+    padding: 0px 20px 0px 40px;
+}
+.content-settings::-webkit-scrollbar {
+    width: 14px;
+    background: #323232;
+    border-radius: 50px;
+}
+.content-settings::-webkit-scrollbar-thumb {
+    background: #ffffffb3;
+    border-radius: 50px;
+    border: 3px #323232 solid;
 }

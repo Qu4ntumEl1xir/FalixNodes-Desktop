@@ -10,9 +10,6 @@
   "license": "MIT",
   "dependencies": {
     "electron": "^15.2.0",
-    "glasstron": "^0.1.1",
-    "ip2proxy-nodejs": "^4.0.0",
-    "node-openvpn": "^0.1.1",
-    "vpn-gate": "^2.0.1"
+    "glasstron": "^0.1.1"
   }
 }

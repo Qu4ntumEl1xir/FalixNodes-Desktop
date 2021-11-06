@@ -1,82 +1,38 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <title>Falix Software</title>
-        <!-- CSS-->
+        <title>FalixNodes Desktop</title>
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="./css/font.css">
-        <link rel="stylesheet" href="./css/titlebar.css">
         <link rel="stylesheet" href="./fonts/fontawesome-pro-6.0.0-beta2-web/css/all.css">
-        <!-- CSS - Configurations -->
-        <!-- JS - Configurations -->
-        <!-- JS - User Interface -->
-        <script src="js/user-interface/sidebar-header.js"></script>
-        <script src="js/user-interface/sidebar-navigation.js"></script>
-        <!-- JS - Other Functions -->
     </head>
-    <body onload="sidebarHeader_default(); selectClientDE();">
-        <div class="onboarding"></div>
-        <div class="dialogs"></div>
+    <body>
         <div class="sidebar">
-            <div class="sb-header">
-                <h1>FalixNodes Desktop</h1>
-                <span id="sb-header-selected"></span>
-                <div class="sb-header-left">
-                    <button onclick="sidebarHeader_default();"><i class="fa-duotone fa-sidebar"></i> <in id="sb-header-text-default">Dashboard</in></button>
-                </div>
-                <div class="sb-header-right">
-                    <button onclick="sidebarHeader_notifications();"><i class="fa-duotone fa-bell"></i> <in id="sb-header-text-notifications">Notifications</in></button>
-                    <button onclick="sidebarHeader_settings();"><i class="fa-duotone fa-gears"></i> <in id="sb-header-text-settings">Settings</in></button>
-                </div>
+            <div class="sidebar-top-area">
+                <button class="tab"><i class="fa-duotone fa-newspaper"></i> News <div include="./src/include/article-controls.js"></div></button>
+                <button class="tab"><i class="fa-duotone fa-id-card"></i> Client <div include="./src/include/client-controls.js"></div></button>
+                <button class="tab"><i class="fa-duotone fa-server"></i> Servers <div include="./src/include/servers-controls.js"></div></button>
             </div>
-            <div id="nv-default" class="sb-navigation">
-                <span id="nv-default-selected"></span>
-                <button onclick="hideAll(); selectNewsDE()" id="tab-news"><i class="fa-duotone fa-newspaper"></i> News</button>
-                <button onclick="hideAll(); selectClientDE()" id="tab-client"><i class="fa-duotone fa-id-card"></i> Client</button>
-                <button onclick="hideAll(); selectServersDE()" id="tab-servers"><i class="fa-duotone fa-server"></i> Servers</button>
-            </div>
-            <div id="nv-notifications" class="sb-navigation">
-                <button class="notification-card">
-                    <h1><i class="fa-duotone fa-wifi-exclamation"></i> Network Error</h1>
-                    <p>FalixNodes Software appears to be having issues connecting to the internet.</p>
-                </button>
-                <button class="notification-card">
-                    <h1><i class="fa-duotone fa-audio-description-slash"></i> Adblock Detected</h1>
-                    <p>An adblock has been detected, FalixNodes Software will not allow you to view your panels while it's enabled. Please disable it to continue.</p>
-                </button>
-                <button class="notification-card">
-                    <h1><i class="fa-duotone fa-spinner-third fa-spin"></i> New Update</h1>
-                    <p>A new update is downloading...</p>
-                </button>
-            </div>
-            <div id="nv-settings" class="sb-navigation">
-                <button><i class="fa-duotone fa-business-time"></i> Uptime</button>
-                <button><i class="fa-duotone fa-circle-user"></i> Account</button>
-                <button><i class="fa-duotone fa-info"></i> About</button>
-                <button><i class="fa-duotone fa-language"></i> Language</button>
-                <button><i class="fa-duotone fa-command"></i> Keyboard Shortcuts</button>
-                <button><i class="fa-duotone fa-swatchbook"></i> Appearance</button>
-                <button><i class="fa-duotone fa-code-simple"></i> Developer</button>
+            <div class="sidebar-bottom-area">
+                <button class="tab"><i class="fa-duotone fa-comments-question-check"></i> Help Center <div include="./src/include/help-center-controls.js"></div></button>
+                <button class="tab"><i class="fa-duotone fa-sliders"></i> Settings</button>
             </div>
         </div>
         <div class="content">
-            <div id="client-panel" class="tab-view">
-                <div class="topbar-view">
-                    <h1>Client Panel</h1>
-                    <div class="controls-main">
-                        <control onclick="clientHome()"><i class="fa-duotone fa-house-chimney"></i></control>
-                        <control onclick="clientReload()"><i class="fa-duotone fa-rotate"></i></control>
-                        <control onclick="clientGoBack()"><i class="fa-duotone fa-arrow-left-long"></i></control>
-                        <control onclick="clientGoForward()"><i class="fa-duotone fa-arrow-right-long"></i></control>
-                    </div>
-                    <div class="controls-optional">
-<!--                        <control onclick="clientFS()"><i class="fa-duotone fa-arrow-up-right-and-arrow-down-left-from-center"></i></control>-->
-                        <control onclick="clientDev()"><i class="fa-duotone fa-rectangle-code"></i></control>
+            <div id="settings" class="tab-view">
+                <div class="sidebar-settings">
+                    <button class="tab"><i class="fa-duotone fa-memo"></i> About</button>
+                    <button class="tab"><i class="fa-duotone fa-user-crown"></i> Account</button>
+                    <button class="tab"><i class="fa-duotone fa-palette"></i> Appearance</button>
+                    <button class="tab"><i class="fa-duotone fa-language"></i> Language</button>
+                    <button class="tab"><i class="fa-duotone fa-code"></i> Advanced</button>
+                </div>
+                <div class="content-settings">
+                    <div id="about" class="settings-view">
+                        <h1>About</h1>
+                        <p>FalixNodes Desktop v3.5</p>
                     </div>
                 </div>
-                <webview id="client-webview" class="full-size" src="https://client.falixnodes.net"></webview>
             </div>
         </div>
-        <script src="js/webview/controls.js"></script>
     </body>
 </html>
