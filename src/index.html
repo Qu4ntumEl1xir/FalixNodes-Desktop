@@ -13,7 +13,7 @@
                 <button class="tab"><i class="fa-duotone fa-server"></i> Servers <div include="./src/include/servers-controls.js"></div></button>
             </div>
             <div class="sidebar-bottom-area">
-                <button class="tab"><i class="fa-duotone fa-comments-question-check"></i> Help Center <div include="./src/include/help-center-controls.js"></div></button>
+                <button class="tab"><i class="fa-duotone fa-comments-question-check"></i> Help Center <div include="./include/help-center-controls.js"></div></button>
                 <button class="tab"><i class="fa-duotone fa-sliders"></i> Settings</button>
             </div>
         </div>
@@ -21,6 +21,7 @@
             <div id="settings" class="tab-view">
                 <div class="sidebar-settings">
                     <button class="tab"><i class="fa-duotone fa-memo"></i> About</button>
+                    <button class="tab"><i class="fa-duotone fa-memo"></i> License</button>
                     <button class="tab"><i class="fa-duotone fa-user-crown"></i> Account</button>
                     <button class="tab"><i class="fa-duotone fa-palette"></i> Appearance</button>
                     <button class="tab"><i class="fa-duotone fa-language"></i> Language</button>
@@ -29,7 +30,14 @@
                 <div class="content-settings">
                     <div id="about" class="settings-view">
                         <h1>About</h1>
-                        <p>FalixNodes Desktop v3.5</p>
+                        <p><img id="icon-about" src="../assets/images/icons/app/icon.png"> FalixNodes Desktop v3.5.0 (Build <span id="build-number"></span>)</p>
+                        <p>Accessing Falix, all from one place</p>
+                    </div>
+                    <div id="license" class="settings-view">
+                        <div include=""
+                    </div>
+                    <div id="account" class="settings-view">
+                        <webview id="spread" preload="./js/domain-whitelist/whitelist.js" src="https://client.falixnodes.net/profile/settings"></webview>
                     </div>
                 </div>
             </div>

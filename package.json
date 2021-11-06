@@ -1,15 +1,49 @@
 {
   "name": "falixnodes",
-  "version": "5.0.0",
-  "description": "",
+  "version": "4.51.0",
+  "description": "Accessing Falix, all from one place",
+  "icon": "assets/images/icons/app/icon.png",
   "main": "main/index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder build"
   },
   "author": "KorbsStudio",
   "license": "MIT",
   "dependencies": {
-    "electron": "^15.2.0",
     "glasstron": "^0.1.1"
+  },
+  "devDependencies": {
+    "electron-builder": "^22.13.1",
+    "electron": "^15.2.0"
+  },
+  "build": {
+    "publish": {
+      "provider": "generic",
+      "url": "https://updates.korbsstudio.com/falix-software/"
+    },
+    "win": {
+      "target": "nsis",
+      "asar": "false"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "flatpak",
+      "maintainer": "package.korbsstudio.falixnodes",
+      "category": "Network",
+      "vendor": "Korbs Studio",
+      "description": "Accessing Falix, all from one place"
+    },
+    "nsis": {
+      "deleteAppDataOnUninstall": true,
+      "shortcutName": "Falix Software",
+      "displayLanguageSelector": true,
+      "oneClick": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": false
+    }
   }
 }
