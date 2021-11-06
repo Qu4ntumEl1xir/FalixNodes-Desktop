@@ -8,14 +8,13 @@ const getGamePanelNW        = require('./new-window/game-panel.js');
 const getClientPanelNW      = require('./new-window/control-panel.js');
 const getArticleViewNW      = require('./new-window/article-view.js');
 const getGlasstronDemNW     = require('./new-window/glasstron-demo.js');
-const vpn                   = require('./vpn.js');
 const path                  = require('path');
 
 function createWindow() {
   const mainWindow = new glasstron.BrowserWindow({
     width: 1250,
     height: 800,
-    minWidth: 430,
+    minWidth: 1080,
     minHeight: 520,
     frame: global.frame,
     show: true,

@@ -20,27 +20,51 @@
         <div class="content">
             <div id="settings" class="tab-view">
                 <div class="sidebar-settings">
-                    <button class="tab"><i class="fa-duotone fa-memo"></i> About</button>
-                    <button class="tab"><i class="fa-duotone fa-memo"></i> License</button>
-                    <button class="tab"><i class="fa-duotone fa-user-crown"></i> Account</button>
-                    <button class="tab"><i class="fa-duotone fa-palette"></i> Appearance</button>
-                    <button class="tab"><i class="fa-duotone fa-language"></i> Language</button>
-                    <button class="tab"><i class="fa-duotone fa-code"></i> Advanced</button>
+                    <span id="selected-settings"></span>
+                    <button onclick="selectAbout()" class="tab"><i class="fa-duotone fa-memo"></i> About</button>
+                    <button onclick="selectAccount()" class="tab"><i class="fa-duotone fa-user-crown"></i> Account</button>
+                    <button onclick="selectAppearance()" class="tab"><i class="fa-duotone fa-palette"></i> Appearance</button>
+                    <button onclick="selectLanguage()" class="tab"><i class="fa-duotone fa-language"></i> Language</button>
+                    <button onclick="selectAdvanced()" class="tab"><i class="fa-duotone fa-code"></i> Advanced</button>
                 </div>
                 <div class="content-settings">
-                    <div id="about" class="settings-view">
+                    <div id="about-settings" class="settings-view">
                         <h1>About</h1>
-                        <p><img id="icon-about" src="../assets/images/icons/app/icon.png"> FalixNodes Desktop v3.5.0 (Build <span id="build-number"></span>)</p>
-                        <p>Accessing Falix, all from one place</p>
+                        <div id="contrast">
+                            <img id="icon-about" src="../assets/images/icons/app/icon.png">
+                            <p>FalixNodes Desktop v3.5.0 (Build 4.51.0)</p>
+                            <p>Accessing Falix, all from one place</p>
+                        </div>
+                        <div id="contrast">
+                            <h1>License</h1>
+                            <h2>MIT License</h2>
+                            <p>Copyright (c) 2018 - 2021 Korbs Studio</p>
+                            <p>Copyright (c) 2020 - 2021 FalixNodes Limited</p>
+                            <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+                                of this software and associated documentation files (the "Software"), to deal
+                                in the Software without restriction, including without limitation the rights
+                                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                                copies of the Software, and to permit persons to whom the Software is
+                                furnished to do so, subject to the following conditions:</p>
+
+                            <p>The above copyright notice and this permission notice shall be included in all
+                                copies or substantial portions of the Software.</p>
+
+                            <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                                SOFTWARE.</p>
+                        </div>
                     </div>
-                    <div id="license" class="settings-view">
-                        <div include=""
-                    </div>
-                    <div id="account" class="settings-view">
+                    <div id="account-settings" class="settings-view">
                         <webview id="spread" preload="./js/domain-whitelist/whitelist.js" src="https://client.falixnodes.net/profile/settings"></webview>
                     </div>
                 </div>
             </div>
         </div>
     </body>
+    <script src="./js/user-interface/sidebar-navigation.js"></script>
 </html>

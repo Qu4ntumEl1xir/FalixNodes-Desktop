@@ -1,8 +1,16 @@
+:root {
+    --accent: rgb(113 109 255 / 40%);
+}
+
 body {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     color: white;
     font-family: 'Poppins';
     overflow: hidden;
+}
+
+button.tab i {
+    margin: 0px 10px 0px 0px;
 }
 
 .sidebar {
@@ -14,12 +22,12 @@ body {
 }
 .sidebar button {
     cursor: pointer;
-    background: rgba(50,50,50,1);
+    background: rgba(0, 0, 0, 0.4);
     color: white;
     border: none;
     width: 100%;
     border-radius: 4px;
-    padding: 8px 0px 8px 15px;
+    padding: 13px 18px;
     margin-bottom: 9px;
     text-align: left;
 }
@@ -48,18 +56,18 @@ body {
 }
 .sidebar-settings button {
     cursor: pointer;
-    background: rgba(50,50,50,1);
+    background: transparent;
     color: white;
     border: none;
     width: 100%;
     border-radius: 4px;
-    padding: 8px 0px 8px 15px;
+    padding: 13px 18px;
     margin-bottom: 9px;
     text-align: left;
 }
 .content-settings {
     position: absolute;
-    background: #323232;
+    background: rgba(0, 0, 0, 0.4);
     left: 270px;
     top: 0px;
     width: calc(100% - 360px);
@@ -78,4 +86,22 @@ body {
     background: #ffffffb3;
     border-radius: 50px;
     border: 3px #323232 solid;
+}
+div#contrast {
+    background: rgb(56 56 56 / 40%);
+    border-radius: 7px;
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 4px rgb(56 56 56 / 40%) solid;
+}
+
+span#selected-settings {
+    background: var(--accent);
+    position: absolute;
+    top: 15px;
+    width: inherit;
+    height: 40px;
+    border-radius: 4px;
+    z-index: -1;
+    transition: 0.3s top;
 }
